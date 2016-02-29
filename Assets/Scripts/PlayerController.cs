@@ -10,8 +10,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody rb;
     private int count;
     public Text winText;
-
-
+	public Slider healthSlider;
+	public PlayerHealth playerHealth;
     
     
 
@@ -19,10 +19,18 @@ public class PlayerController : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody> ();
         count = 0;
-        SetCountText();
+        //SetCountText();
         winText.text = "";
 
+
     }
+
+	void Update(){
+		
+
+	}
+
+
 	void FixedUpdate ()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -41,19 +49,23 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
-            count = count + 1;
-            SetCountText();
+
+			playerHealth.currentHealth += 50;
+
+			healthSlider.value = playerHealth.currentHealth;
+            //count = count + 1;
+            //SetCountText();
         }
 
     }
 
-    void SetCountText ()
+   /* void SetCountText ()
     {
         countText.text = "Count:" + count.ToString();
         if (count >= 12)
         {
             winText.text = "You Win!";
         }
-    }
+    }*/
 
 }

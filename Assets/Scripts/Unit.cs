@@ -5,7 +5,7 @@ public class Unit : MonoBehaviour {
 
 
 	public Transform target;
-	float speed = 50;
+	public float speed = 20;
 	Vector3[] path;
 	int targetIndex;
 
