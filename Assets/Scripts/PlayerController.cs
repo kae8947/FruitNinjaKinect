@@ -12,21 +12,23 @@ public class PlayerController : MonoBehaviour {
     public Text winText;
 	public Slider healthSlider;
 	public PlayerHealth playerHealth;
-    
+	public int scoreValue = 10;
+	public int healthValue = 50;
+	GameObject Fruit;
     
 
-	void Start ()
+	void Awake ()
 	{
 		rb = GetComponent<Rigidbody> ();
         count = 0;
         //SetCountText();
-        winText.text = "";
-
-
+        //winText.text = "";
+		GetComponent<ScoreManager>();
     }
 
 	void Update(){
 		
+
 
 	}
 
@@ -50,12 +52,20 @@ public class PlayerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
 
-			playerHealth.currentHealth += 50;
+			playerHealth.currentHealth += healthValue;
 
 			healthSlider.value = playerHealth.currentHealth;
             //count = count + 1;
             //SetCountText();
         }
+
+		if (other.gameObject.CompareTag("Fruit")) {
+
+			other.gameObject.GetComponent<ExplodingFruit>().Explode(); 	
+			Destroy (other.gameObject, 3f);
+
+			ScoreManager.score += scoreValue;
+		}
 
     }
 
@@ -67,5 +77,4 @@ public class PlayerController : MonoBehaviour {
             winText.text = "You Win!";
         }
     }*/
-
 }
