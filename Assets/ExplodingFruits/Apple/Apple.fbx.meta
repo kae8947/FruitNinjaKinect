@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: e04d18f069ce141d4ae639ae75b2724f
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: AppleChunk
+    100004: AppleChunk1
+    100006: AppleChunk10
+    100008: AppleChunk11
+    100010: AppleChunk12
+    100012: AppleChunk13
+    100014: AppleChunk14
+    100016: AppleChunk2
+    100018: AppleChunk3
+    100020: AppleChunk4
+    100022: AppleChunk5
+    100024: AppleChunk6
+    100026: AppleChunk7
+    100028: AppleChunk8
+    100030: AppleChunk9
+    100032: AppleStalk
+    100034: AppleWhole
+    400000: //RootNode
+    400002: AppleChunk
+    400004: AppleChunk1
+    400006: AppleChunk10
+    400008: AppleChunk11
+    400010: AppleChunk12
+    400012: AppleChunk13
+    400014: AppleChunk14
+    400016: AppleChunk2
+    400018: AppleChunk3
+    400020: AppleChunk4
+    400022: AppleChunk5
+    400024: AppleChunk6
+    400026: AppleChunk7
+    400028: AppleChunk8
+    400030: AppleChunk9
+    400032: AppleStalk
+    400034: AppleWhole
+    2300000: AppleChunk
+    2300002: AppleChunk1
+    2300004: AppleChunk10
+    2300006: AppleChunk11
+    2300008: AppleChunk12
+    2300010: AppleChunk13
+    2300012: AppleChunk14
+    2300014: AppleChunk2
+    2300016: AppleChunk3
+    2300018: AppleChunk4
+    2300020: AppleChunk5
+    2300022: AppleChunk6
+    2300024: AppleChunk7
+    2300026: AppleChunk8
+    2300028: AppleChunk9
+    2300030: AppleStalk
+    2300032: AppleWhole
+    3300000: AppleChunk
+    3300002: AppleChunk1
+    3300004: AppleChunk10
+    3300006: AppleChunk11
+    3300008: AppleChunk12
+    3300010: AppleChunk13
+    3300012: AppleChunk14
+    3300014: AppleChunk2
+    3300016: AppleChunk3
+    3300018: AppleChunk4
+    3300020: AppleChunk5
+    3300022: AppleChunk6
+    3300024: AppleChunk7
+    3300026: AppleChunk8
+    3300028: AppleChunk9
+    3300030: AppleStalk
+    3300032: AppleWhole
+    4300000: AppleStalk
+    4300002: AppleChunk
+    4300004: AppleChunk1
+    4300006: AppleChunk2
+    4300008: AppleChunk3
+    4300010: AppleChunk4
+    4300012: AppleChunk5
+    4300014: AppleChunk6
+    4300016: AppleChunk7
+    4300018: AppleChunk8
+    4300020: AppleChunk9
+    4300022: AppleChunk10
+    4300024: AppleChunk11
+    4300026: AppleChunk12
+    4300028: AppleChunk13
+    4300030: AppleChunk14
+    4300032: AppleWhole
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 154
+    normalImportMode: 1
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 0337fdb5443d0491f9afedb784025733
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Guts
+    100002: Guts1
+    100004: Guts2
+    100006: Guts3
+    100008: Guts4
+    100010: //RootNode
+    100012: WatermelonChunk
+    100014: WatermelonChunk1
+    100016: WatermelonChunk10
+    100018: WatermelonChunk2
+    100020: WatermelonChunk3
+    100022: WatermelonChunk4
+    100024: WatermelonChunk5
+    100026: WatermelonChunk6
+    100028: WatermelonChunk7
+    100030: WatermelonChunk8
+    100032: WatermelonChunk9
+    100034: WatermelonWhole
+    400000: Guts
+    400002: Guts1
+    400004: Guts2
+    400006: Guts3
+    400008: Guts4
+    400010: //RootNode
+    400012: WatermelonChunk
+    400014: WatermelonChunk1
+    400016: WatermelonChunk10
+    400018: WatermelonChunk2
+    400020: WatermelonChunk3
+    400022: WatermelonChunk4
+    400024: WatermelonChunk5
+    400026: WatermelonChunk6
+    400028: WatermelonChunk7
+    400030: WatermelonChunk8
+    400032: WatermelonChunk9
+    400034: WatermelonWhole
+    2300000: Guts
+    2300002: Guts1
+    2300004: Guts2
+    2300006: Guts3
+    2300008: Guts4
+    2300010: WatermelonChunk
+    2300012: WatermelonChunk1
+    2300014: WatermelonChunk10
+    2300016: WatermelonChunk2
+    2300018: WatermelonChunk3
+    2300020: WatermelonChunk4
+    2300022: WatermelonChunk5
+    2300024: WatermelonChunk6
+    2300026: WatermelonChunk7
+    2300028: WatermelonChunk8
+    2300030: WatermelonChunk9
+    2300032: WatermelonWhole
+    3300000: Guts
+    3300002: Guts1
+    3300004: Guts2
+    3300006: Guts3
+    3300008: Guts4
+    3300010: WatermelonChunk
+    3300012: WatermelonChunk1
+    3300014: WatermelonChunk10
+    3300016: WatermelonChunk2
+    3300018: WatermelonChunk3
+    3300020: WatermelonChunk4
+    3300022: WatermelonChunk5
+    3300024: WatermelonChunk6
+    3300026: WatermelonChunk7
+    3300028: WatermelonChunk8
+    3300030: WatermelonChunk9
+    3300032: WatermelonWhole
+    4300000: WatermelonWhole
+    4300002: Guts
+    4300004: Guts1
+    4300006: Guts2
+    4300008: Guts3
+    4300010: Guts4
+    4300012: WatermelonChunk
+    4300014: WatermelonChunk1
+    4300016: WatermelonChunk2
+    4300018: WatermelonChunk3
+    4300020: WatermelonChunk4
+    4300022: WatermelonChunk5
+    4300024: WatermelonChunk6
+    4300026: WatermelonChunk7
+    4300028: WatermelonChunk8
+    4300030: WatermelonChunk9
+    4300032: WatermelonChunk10
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

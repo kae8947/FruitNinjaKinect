@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: d1ebb7aaf785249b29c3218d2391e51c
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: InnerChunk
+    100002: InnerChunk1
+    100004: InnerChunk2
+    100006: InnerChunk3
+    100008: InnerChunk4
+    100010: InnerChunk5
+    100012: InnerChunk6
+    100014: //RootNode
+    100016: PumpkinChunk
+    100018: PumpkinChunk1
+    100020: PumpkinChunk10
+    100022: PumpkinChunk2
+    100024: PumpkinChunk3
+    100026: PumpkinChunk4
+    100028: PumpkinChunk5
+    100030: PumpkinChunk6
+    100032: PumpkinChunk7
+    100034: PumpkinChunk8
+    100036: PumpkinChunk9
+    100038: PumpkinWhole
+    100040: Stalk
+    400000: InnerChunk
+    400002: InnerChunk1
+    400004: InnerChunk2
+    400006: InnerChunk3
+    400008: InnerChunk4
+    400010: InnerChunk5
+    400012: InnerChunk6
+    400014: //RootNode
+    400016: PumpkinChunk
+    400018: PumpkinChunk1
+    400020: PumpkinChunk10
+    400022: PumpkinChunk2
+    400024: PumpkinChunk3
+    400026: PumpkinChunk4
+    400028: PumpkinChunk5
+    400030: PumpkinChunk6
+    400032: PumpkinChunk7
+    400034: PumpkinChunk8
+    400036: PumpkinChunk9
+    400038: PumpkinWhole
+    400040: Stalk
+    2300000: InnerChunk
+    2300002: InnerChunk1
+    2300004: InnerChunk2
+    2300006: InnerChunk3
+    2300008: InnerChunk4
+    2300010: InnerChunk5
+    2300012: InnerChunk6
+    2300014: PumpkinChunk
+    2300016: PumpkinChunk1
+    2300018: PumpkinChunk10
+    2300020: PumpkinChunk2
+    2300022: PumpkinChunk3
+    2300024: PumpkinChunk4
+    2300026: PumpkinChunk5
+    2300028: PumpkinChunk6
+    2300030: PumpkinChunk7
+    2300032: PumpkinChunk8
+    2300034: PumpkinChunk9
+    2300036: PumpkinWhole
+    2300038: Stalk
+    3300000: InnerChunk
+    3300002: InnerChunk1
+    3300004: InnerChunk2
+    3300006: InnerChunk3
+    3300008: InnerChunk4
+    3300010: InnerChunk5
+    3300012: InnerChunk6
+    3300014: PumpkinChunk
+    3300016: PumpkinChunk1
+    3300018: PumpkinChunk10
+    3300020: PumpkinChunk2
+    3300022: PumpkinChunk3
+    3300024: PumpkinChunk4
+    3300026: PumpkinChunk5
+    3300028: PumpkinChunk6
+    3300030: PumpkinChunk7
+    3300032: PumpkinChunk8
+    3300034: PumpkinChunk9
+    3300036: PumpkinWhole
+    3300038: Stalk
+    4300000: PumpkinWhole
+    4300002: Stalk
+    4300004: PumpkinChunk
+    4300006: PumpkinChunk1
+    4300008: PumpkinChunk2
+    4300010: PumpkinChunk3
+    4300012: PumpkinChunk4
+    4300014: PumpkinChunk5
+    4300016: PumpkinChunk6
+    4300018: PumpkinChunk7
+    4300020: PumpkinChunk8
+    4300022: PumpkinChunk9
+    4300024: PumpkinChunk10
+    4300026: InnerChunk
+    4300028: InnerChunk1
+    4300030: InnerChunk2
+    4300032: InnerChunk3
+    4300034: InnerChunk4
+    4300036: InnerChunk5
+    4300038: InnerChunk6
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 61
+    normalImportMode: 1
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
