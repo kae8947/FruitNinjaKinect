@@ -3,16 +3,40 @@ using System.Collections;
 
 public class FruitManager : MonoBehaviour {
 
-	public PlayerHealth playerHealth;       // Reference to the player's heatlh.
-	public GameObject shotPrefab;                // The enemy prefab to be spawned.
+	public PlayerHealth playerHealth;       
+	public GameObject fruit;  
 	public Transform player;
 	public Transform spawnPoints;
-
+	public GameObject rottenFruit;
+	GameObject currentObject;
 
 	void Start ()
 	{
 		// Call the Spawn function after a delay of the spawnTime and then continue to call after the same amount of time.
-		InvokeRepeating("Spawn", Random.Range(1.0F, 3.0F), Random.Range(1.0F, 3.0F));
+
+		InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+
+
+	}
+
+	void Update(){
+
+
+		if (Input.GetKeyUp (KeyCode.C)) {
+			if (currentObject != null)
+				Destroy (currentObject);
+			CancelInvoke ("switchObject");
+			InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+		}
+
+		if (Input.GetKeyDown (KeyCode.C)) {
+
+			if (currentObject != null)
+				Destroy (currentObject);
+			CancelInvoke ("Spawn");
+			InvokeRepeating ("switchObject", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+		}
+	
 	}
 
 
@@ -25,7 +49,17 @@ public class FruitManager : MonoBehaviour {
 			return;
 		}
 
-		GameObject shotObject = (GameObject)Instantiate(shotPrefab, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
-		Rigidbody shot = shotObject.GetComponent<Rigidbody>();
+		currentObject = (GameObject)Instantiate(fruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
+	}
+
+	void switchObject(){
+
+		if (playerHealth.currentHealth <= 0f)
+		{
+			return;
+		}
+
+		currentObject = (GameObject)Instantiate(rottenFruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
+
 	}
 }

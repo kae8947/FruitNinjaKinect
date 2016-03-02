@@ -21,7 +21,7 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	IEnumerator FollowPath() {
+	/*IEnumerator FollowPath() {
 		Vector3 currentWaypoint = path[0];
 
 		while (true) {
@@ -37,7 +37,7 @@ public class Unit : MonoBehaviour {
 			yield return null;
 
 		}
-	}
+	}*/
 
 	public void OnDrawGizmos() {
 		if (path != null) {
