@@ -17,6 +17,7 @@ TagManager:
   - HookCollider
   - Sweet
   - Gesture
+  - Target
   layers:
   - Default
   - TransparentFX
