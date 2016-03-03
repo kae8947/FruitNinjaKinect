@@ -1,0 +1,16 @@
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\KinectSpeechRecognition.exe.config
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\KinectSpeechRecognition.exe
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\KinectSpeechRecognition.pdb
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\Microsoft.Kinect.dll
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\Microsoft.Speech.dll
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\bin\AnyCPU\Debug\Microsoft.Kinect.xml
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition.csprojResolveAssemblyReference.cache
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\MainWindow.baml
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\MainWindow.g.cs
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\App.g.cs
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition_MarkupCompile.cache
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition.g.resources
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\Microsoft.Samples.Kinect.SpeechBasics.Properties.Resources.resources
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition.csproj.GenerateResource.Cache
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition.exe
+C:\Users\Owner\Documents\FruitNinjaKinect\KinectSpeechRecognition\obj\Debug\KinectSpeechRecognition.pdb
