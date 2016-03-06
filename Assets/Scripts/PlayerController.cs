@@ -64,5 +64,6 @@ public class PlayerController : MonoBehaviour {
 
 			ScoreManager.score += scoreValue;
 		}
+
     }
 }
