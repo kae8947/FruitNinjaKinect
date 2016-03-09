@@ -5,8 +5,9 @@ public class GameObjectSelector : MonoBehaviour {
 
     public string[] tagsToSelect;
     public float distanceToCheck;
-    public bool selectingObject;
-    public GameObject cachedObj;
+    public GameObject pointToCheck;
+
+    GameObject cachedObj;
 
     // Use this for initialization
     void Start () {
@@ -18,10 +19,15 @@ public class GameObjectSelector : MonoBehaviour {
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        selectingObject = false;
-        
+        //Ray ray = Camera.main.ScreenPointToRay(pointToCheck.transform.parent.parent.position);
 
-        if (Physics.Raycast(ray, out hit, distanceToCheck))
+        Vector3 dir = pointToCheck.transform.position - Camera.main.transform.position;
+
+        Debug.DrawRay(Camera.main.transform.position, dir * 10, Color.yellow);
+        bool selectingObject = false;
+
+        //if (Physics.Raycast(ray, out hit, distanceToCheck))
+        if (Physics.Raycast(Camera.main.transform.position, dir, out hit, distanceToCheck))
         {
             foreach (string tagName in tagsToSelect)
             {
@@ -88,6 +94,11 @@ public class GameObjectSelector : MonoBehaviour {
             ParticleSystem.EmissionModule cachedEmisionModule = cachedParticleSys.emission;
             cachedEmisionModule.enabled = false;
         }
+    }
+
+    public GameObject getSelectedObject()
+    {
+        return cachedObj;
     }
 
 }
