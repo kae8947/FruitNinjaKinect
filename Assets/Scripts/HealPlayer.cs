@@ -1,23 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FruitAttack : MonoBehaviour {
+public class HealPlayer : MonoBehaviour {
 
-	public float timeBetweenAttacks = 0.5f;     
-	public int attackDamage = 10;               
-
-	//Animator anim;                              
+	public float timeBetweenHeals = 0.5f;     
+	public int healValue = 10; 
+	                             
 	GameObject player;                         
-	PlayerHealth playerHealth;                  
-	//EnemyHealth enemyHealth;                    
+	PlayerHealth playerHealth;                                  
 	bool playerInRange;                        
-	float timer;  
+	float timer;                                
 
 	void Awake ()
 	{
 		// Setting up the references.
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
+
 	}
 
 
@@ -39,8 +38,7 @@ public class FruitAttack : MonoBehaviour {
 		{
 			// ... the player is no longer in range.
 			playerInRange = false;
-			Destroy(gameObject);
-
+			Destroy(gameObject); 
 		}
 	}
 
@@ -50,25 +48,18 @@ public class FruitAttack : MonoBehaviour {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 
-		// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-		if(timer >= timeBetweenAttacks && playerInRange)
+		if(timer >= timeBetweenHeals && playerInRange)
 		{
-			// ... attack.
-			Attack ();
+			Heal ();
 		}
 	}
 
 
-	void Attack ()
+	void Heal ()
 	{
 		// Reset the timer.
 		timer = 0f;
 
-		// If the player has health to lose...
-		if(playerHealth.currentHealth > 0)
-		{
-			// ... damage the player.
-			playerHealth.TakeDamage (attackDamage);
-		}
+		playerHealth.TakeHeal (healValue);
 	}
 }

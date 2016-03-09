@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         //SetCountText();
         //winText.text = "";
 		GetComponent<ScoreManager>();
+        
     }
 
 	void Update(){
@@ -64,6 +65,5 @@ public class PlayerController : MonoBehaviour {
 
 			ScoreManager.score += scoreValue;
 		}
-
     }
 }

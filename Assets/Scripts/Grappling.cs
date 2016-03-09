@@ -14,8 +14,10 @@ public class Grappling : MonoBehaviour {
     public bool attached;
     public GameObject player;
     public GameObject target;
+    public GameObject objectSelect; 
     void Start () {
 
+        
         grappling = GetComponent<LineRenderer>();
         endPosExtendedPos = endPos.localPosition;
 
@@ -26,9 +28,17 @@ public class Grappling : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if (attached) attached = false;
-            else attached = true;
 
+            objectSelect = GameObject.Find("cachedObj");
+            if (objectSelect == null)
+            {
+                attached = false;
+            }
+            else
+            {
+                if (attached) attached = false;
+                else attached = true;
+            }
 
 
 
@@ -56,12 +66,12 @@ public class Grappling : MonoBehaviour {
         {
             
             player.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-            target.transform.position = GameObject.FindGameObjectWithTag("Target").transform.position;
+            objectSelect.transform.position = GameObject.Find("cachedObj").transform.position;
 
             grappling.enabled = true;
             grappling.SetPosition(0, startPos.position);
             grappling.SetPosition(1, endPos.position);
-            diff = target.transform.position - player.transform.position;
+            diff = objectSelect.transform.position - player.transform.position;
             player.transform.position += diff / diff.magnitude * pullSpeedFactor;
 
 
