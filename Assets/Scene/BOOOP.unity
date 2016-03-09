@@ -5518,7 +5518,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: 2bef11a8bc78f4ea096b253565729fba, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 70.73
+      value: 73.35
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 2bef11a8bc78f4ea096b253565729fba, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6903,7 +6903,7 @@ MonoBehaviour:
   - Fruit
   - Pick Up
   distanceToCheck: 100
-  pointToCheck: {fileID: 0}
+  pointToCheck: {fileID: 1133863160}
 --- !u!4 &1949728854
 Transform:
   m_ObjectHideFlags: 0
