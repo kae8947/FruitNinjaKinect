@@ -70,10 +70,10 @@ public class PlayerHealth : MonoBehaviour
 
         //playerShooting.DisableEffects ();
 
-        anim.SetTrigger ("Die");
+        //anim.SetTrigger ("Die");
 
-        playerAudio.clip = deathClip;
-        playerAudio.Play ();
+        //playerAudio.clip = deathClip;
+        //playerAudio.Play ();
 
         playerMovement.enabled = false;
         //playerShooting.enabled = false;

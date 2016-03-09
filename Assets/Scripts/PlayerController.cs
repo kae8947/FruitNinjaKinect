@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 			healthSlider.value = playerHealth.currentHealth;
         }
 
-		if (other.gameObject.CompareTag("Fruit")) {
+		if (other.gameObject.CompareTag("Shootable")&& other.gameObject.layer == LayerMask.NameToLayer("Fruit")) {
 
 			other.gameObject.GetComponent<ExplodingFruit>().Explode(); 	
 			Destroy (other.gameObject, 3f);

@@ -20,7 +20,7 @@ public class ExplodingFruit : MonoBehaviour
 		Transform partsCommonRootTransform;
 		GameObject splashEffect;
 		AudioSource[] splashSounds;
-		bool hasExploded;
+		public bool hasExploded;
 	
 		Dictionary<Transform, Vector3> origPositions = new Dictionary<Transform, Vector3>();
 		Dictionary<Transform, Quaternion> origRotations = new Dictionary<Transform, Quaternion>();
