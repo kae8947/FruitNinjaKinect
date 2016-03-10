@@ -1686,11 +1686,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPos: {fileID: 1139442333}
-  endPos: {fileID: 196947433}
   attached: 0
   player: {fileID: 1139442325}
   target: {fileID: 196947429}
-  objectSelect: {fileID: 0}
+  gameObjectSelector: {fileID: 1949728853}
 --- !u!114 &364757273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9292,8 +9291,6 @@ MonoBehaviour:
   - Pick Up
   distanceToCheck: 100
   pointToCheck: {fileID: 1133863160}
-  selectingObject: 0
-  cachedObj: {fileID: 0}
 --- !u!4 &1949728854
 Transform:
   m_ObjectHideFlags: 0
@@ -9303,7 +9300,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: [{fileID: 864144432}]
+  m_Children:
+  - {fileID: 864144432}
   m_Father: {fileID: 1139442333}
   m_RootOrder: 4
 --- !u!1 &1954579769
@@ -9749,7 +9747,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f98b38b6f94b9344b185c9c80c078b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.726
+      value: 15.54
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3f98b38b6f94b9344b185c9c80c078b2, type: 3}
       propertyPath: m_LocalRotation.x
