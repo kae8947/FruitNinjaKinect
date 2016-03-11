@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Awake ()
 	{
 		// Setting up the references.
-		fruit = GameObject.FindGameObjectWithTag ("Fruit");
+		fruit = GameObject.FindGameObjectWithTag ("Shootable");
 		//playerHealth = player.GetComponent <PlayerHealth> ();
 		enemyHealth = GetComponent<EnemyHealth>();
 		//anim = GetComponent <Animator> ();
@@ -70,7 +70,7 @@ public class PlayerAttack : MonoBehaviour {
 		}*/
 	}
 
-	void Split(){
+	void ThrowStar(){
 	
 	}
 }

@@ -18,6 +18,8 @@ TagManager:
   - Sweet
   - Gesture
   - Target
+  - PooP
+  - Shootable
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - Unwalkable
   - Walkable
   - Fruit
-  - 
+  - Shootable
   - 
   - 
   - 
