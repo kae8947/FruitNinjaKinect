@@ -11,38 +11,6 @@ public class TrackHand : MonoBehaviour
     private Dictionary<ulong, ulong> _Bodies = new Dictionary<ulong, ulong>();
     private BodySourceManager _BodyManager;
 
-    private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
-    {
-        { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
-        { Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
-        { Kinect.JointType.KneeLeft, Kinect.JointType.HipLeft },
-        { Kinect.JointType.HipLeft, Kinect.JointType.SpineBase },
-
-        { Kinect.JointType.FootRight, Kinect.JointType.AnkleRight },
-        { Kinect.JointType.AnkleRight, Kinect.JointType.KneeRight },
-        { Kinect.JointType.KneeRight, Kinect.JointType.HipRight },
-        { Kinect.JointType.HipRight, Kinect.JointType.SpineBase },
-
-        { Kinect.JointType.HandTipLeft, Kinect.JointType.HandLeft },
-        { Kinect.JointType.ThumbLeft, Kinect.JointType.HandLeft },
-        { Kinect.JointType.HandLeft, Kinect.JointType.WristLeft },
-        { Kinect.JointType.WristLeft, Kinect.JointType.ElbowLeft },
-        { Kinect.JointType.ElbowLeft, Kinect.JointType.ShoulderLeft },
-        { Kinect.JointType.ShoulderLeft, Kinect.JointType.SpineShoulder },
-
-        { Kinect.JointType.HandTipRight, Kinect.JointType.HandRight },
-        { Kinect.JointType.ThumbRight, Kinect.JointType.HandRight },
-        { Kinect.JointType.HandRight, Kinect.JointType.WristRight },
-        { Kinect.JointType.WristRight, Kinect.JointType.ElbowRight },
-        { Kinect.JointType.ElbowRight, Kinect.JointType.ShoulderRight },
-        { Kinect.JointType.ShoulderRight, Kinect.JointType.SpineShoulder },
-
-        { Kinect.JointType.SpineBase, Kinect.JointType.SpineMid },
-        { Kinect.JointType.SpineMid, Kinect.JointType.SpineShoulder },
-        { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
-        { Kinect.JointType.Neck, Kinect.JointType.Head },
-    };
-
     void Update()
     {
         if (bodySourceManager == null)
@@ -101,32 +69,75 @@ public class TrackHand : MonoBehaviour
                     _Bodies[body.TrackingId] = body.TrackingId;
                 }
 
-                RefreshBodyObject(body, Kinect.JointType.HandRight);
+                MoveObjectWithJoint(body, Kinect.JointType.HandRight, Kinect.JointType.ShoulderRight);
             }
         }
     }
 
-    private void RefreshBodyObject(Kinect.Body body, Kinect.JointType jt)
+    float firstdeep = -1.0f;
+
+    private void MoveObjectWithJoint(Kinect.Body body, Kinect.JointType hand, Kinect.JointType elbow)
     {
-        Kinect.Joint sourceJoint = body.Joints[jt];
-        Kinect.Joint? targetJoint = null;
+        Kinect.Joint? handJoint = null;
+        Kinect.Joint? elbowJoint = null;
 
-        if (_BoneMap.ContainsKey(jt))
+        handJoint = body.Joints[hand];
+        elbowJoint = body.Joints[elbow];
+
+        if (handJoint.HasValue && elbowJoint.HasValue)
         {
-            targetJoint = body.Joints[_BoneMap[jt]];
-        }
+            //Vector3 handPosition = GetVector3FromJoint(targetJoint.Value, 20);
+            //handPosition.z = objectToMove.transform.localPosition.z;
+            //objectToMove.transform.localPosition = handPosition;
 
-        if (targetJoint.HasValue)
-        {
-            Vector3 handPosition = GetVector3FromJoint(targetJoint.Value);
-            handPosition.z = objectToMove.transform.localPosition.z;
-            objectToMove.transform.localPosition = handPosition;
-        }
+            if (body.HandRightState != Kinect.HandState.Closed)
+            {
+                //float horizontal = handJoint.Value.Position.X * 0.7f;
+                //float vertical = handJoint.Value.Position.Y * 0.1f;
+                //float deep = 0;
 
+                float horizontal = (handJoint.Value.Position.X - elbowJoint.Value.Position.X) * 0.4f;
+                float vertical = (handJoint.Value.Position.Y - elbowJoint.Value.Position.Y) * 0.4f;
+                float deep = 0;
+
+                if (firstdeep == -1)
+                {
+                    firstdeep = handJoint.Value.Position.Z * 0.05f;
+                }
+
+                deep = handJoint.Value.Position.Z * 0.05f - firstdeep;
+
+                float newHorizontal = this.gameObject.transform.localPosition.x + horizontal;
+                float newVertical = this.gameObject.transform.localPosition.y + vertical;
+
+                //float newHorizontal = horizontal;
+                //float newVertical = vertical;
+
+                Vector3 newPos = new Vector3(
+                    newHorizontal,
+                    newVertical,
+                    //this.transform.position.z - deep);
+                    this.transform.localPosition.z);
+
+                //newPos = bounds.ClosestPoint(newPos);
+
+                this.gameObject.transform.localPosition = newPos;
+            }
+        }
     }
 
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
+    private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float scaleFactor)
     {
-        return new Vector3(joint.Position.X * 20, joint.Position.Y * 20, joint.Position.Z * 20);
+        return new Vector3(joint.Position.X * 10 * scaleFactor, joint.Position.Y * 10 * scaleFactor, joint.Position.Z * 10 * scaleFactor);
+    }
+
+    public Bounds OrthographicBounds(Camera camera)
+    {
+        float screenAspect = (float)Screen.width / (float)Screen.height;
+        float cameraHeight = camera.orthographicSize * 2;
+        Bounds bounds = new Bounds(
+            camera.transform.position,
+            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
+        return bounds;
     }
 }
