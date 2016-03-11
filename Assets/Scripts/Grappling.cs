@@ -5,7 +5,7 @@ public class Grappling : MonoBehaviour {
 
     LineRenderer grappling;
     public Transform startPos;
-    public Transform endPos;
+    //GameObject endPos;
     private float textureOffset = 0f;
     private bool on = true;
     private float pullSpeedFactor = 0.5f;
@@ -14,10 +14,13 @@ public class Grappling : MonoBehaviour {
     public bool attached;
     public GameObject player;
     public GameObject target;
+    public GameObjectSelector gameObjectSelector;
+    GameObject objectSelect;
     void Start () {
 
+        
         grappling = GetComponent<LineRenderer>();
-        endPosExtendedPos = endPos.localPosition;
+        //endPosExtendedPos = endPos.localPosition;
 
     }
 
@@ -26,9 +29,17 @@ public class Grappling : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if (attached) attached = false;
-            else attached = true;
 
+            objectSelect = gameObjectSelector.getSelectedObject();
+            if (objectSelect == null)
+            {
+                attached = false;
+            }
+            else
+            {
+                if (attached) attached = false;
+                else attached = true;
+            }
 
 
 
@@ -43,25 +54,24 @@ public class Grappling : MonoBehaviour {
               */
         }
         
-        if (on)
-        {
-            endPos.localPosition = Vector3.Lerp(endPos.localPosition, endPosExtendedPos, Time.deltaTime * 5f);
-        }
-        else
-        {
-            endPos.localPosition = Vector3.Lerp(endPos.localPosition, startPos.localPosition, Time.deltaTime * 5f);
-        }
+        //if (on)
+        //{
+        //    endPos.localPosition = Vector3.Lerp(endPos.localPosition, endPosExtendedPos, Time.deltaTime * 5f);
+        //}
+        //else
+        //{
+        //    endPos.localPosition = Vector3.Lerp(endPos.localPosition, startPos.localPosition, Time.deltaTime * 5f);
+        //}
   
         if (attached)
         {
             
             player.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-            target.transform.position = GameObject.FindGameObjectWithTag("Target").transform.position;
 
             grappling.enabled = true;
             grappling.SetPosition(0, startPos.position);
-            grappling.SetPosition(1, endPos.position);
-            diff = target.transform.position - player.transform.position;
+            grappling.SetPosition(1, objectSelect.transform.position);
+            diff = objectSelect.transform.position - player.transform.position;
             player.transform.position += diff / diff.magnitude * pullSpeedFactor;
 
 
