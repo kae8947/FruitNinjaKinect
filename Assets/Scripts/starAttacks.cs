@@ -7,10 +7,10 @@ public class starAttacks : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Fruit")) {
+		if (other.gameObject.CompareTag("Shootable")) {
 
 			other.gameObject.GetComponent<ExplodingFruit>().Explode(); 	
-			Destroy (gameObject, 2f);
+			Destroy (gameObject, 1f);
 			Destroy (other.gameObject, 3f);
 
 			ScoreManager.score += scoreValue;
