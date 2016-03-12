@@ -11,14 +11,18 @@ public class FruitAttack : MonoBehaviour {
 	PlayerHealth playerHealth;                  
 	//EnemyHealth enemyHealth;                    
 	bool playerInRange;                        
-	float timer;  
+	float timer;
+    SwingSword slash;
+    SwingSword2 slice;
 
-	void Awake ()
+    void Awake ()
 	{
 		// Setting up the references.
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent <PlayerHealth> ();
-	}
+        slash = GetComponentInChildren<SwingSword>();
+        slice = GetComponentInChildren<SwingSword2>();
+    }
 
 
 	void OnTriggerEnter (Collider other)

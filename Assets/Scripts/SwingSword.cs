@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SwingSword : MonoBehaviour {
     Animator anim;
+    public bool hitting = false;
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -13,8 +14,32 @@ public class SwingSword : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F))
        {
 
-            anim.SetTrigger("Swing01");
+
+           hitting = true;
 
         }
+
+        if (hitting)
+        {
+            anim.SetTrigger("Swing01");
+            StartCoroutine(Waiting());
+
+
+
+
+        }
+
+
+
     }
+
+    IEnumerator Waiting()
+    {
+        
+        yield return new WaitForSeconds(0.7f);
+        hitting = false;
+        
+    }
+
+
 }
