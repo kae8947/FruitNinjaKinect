@@ -6127,11 +6127,6 @@ MonoBehaviour:
   starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   Star_forward_Force: 1000
   distanceToCheck: 100
-  bodySourceManager: {fileID: 86450455}
-  sideTollerance: 0.3
-  forwardTollerance: 1
-  turnSpeed: 100
-  moveSpeed: 10
 --- !u!1 &1148083215
 GameObject:
   m_ObjectHideFlags: 0
@@ -8413,6 +8408,7 @@ GameObject:
   - 114: {fileID: 1806737209}
   - 114: {fileID: 1806737212}
   - 114: {fileID: 1806737211}
+  - 114: {fileID: 1806737213}
   m_Layer: 0
   m_Name: FruitManager
   m_TagString: Untagged
@@ -8480,6 +8476,20 @@ MonoBehaviour:
   player: {fileID: 1139442333}
   spawnPoints: {fileID: 1241221304}
   rottenFruit: {fileID: 100000, guid: cff1e84fed4104a37bf1f034494cc32a, type: 2}
+--- !u!114 &1806737213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1806737208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 301f37fe01893db45a6f5ea269216fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 0
+  lastReceivedUDPPacket: 
+  allReceivedUDPPackets: 
 --- !u!1001 &1808648709
 Prefab:
   m_ObjectHideFlags: 0
@@ -8971,7 +8981,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 41
 --- !u!1 &1909880428
 GameObject:
   m_ObjectHideFlags: 0
