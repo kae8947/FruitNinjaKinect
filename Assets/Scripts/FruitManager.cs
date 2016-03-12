@@ -11,20 +11,21 @@ public class FruitManager : MonoBehaviour {
 	public GameObject rottenFruit;
 	GameObject currentObject;
 	List<GameObject> myList = new List<GameObject>();
-	//List<Transform> myTransform = new List<Transform>();
+	string messageReceived;
 
 	void Start ()
 	{
 		InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+		messageReceived = GetComponent<UDPReceive> ().getLatestUDPPacket();
 	}
 
 	void Update(){
 
-		if (Input.GetKeyUp (KeyCode.C)) {
+		if (playerHealth.currentHealth == playerHealth.startingHealth) {
 			InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
 		}
 
-		if (Input.GetKeyDown (KeyCode.C)) {
+		if (messageReceived == "Candy God Help Me") {
 			CancelInvoke ("Spawn");
 			switchObject();
 		}
