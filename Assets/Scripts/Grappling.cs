@@ -16,10 +16,12 @@ public class Grappling : MonoBehaviour {
     public GameObject target;
     public GameObjectSelector gameObjectSelector;
     GameObject objectSelect;
+  
     void Start () {
 
         
         grappling = GetComponent<LineRenderer>();
+     
         //endPosExtendedPos = endPos.localPosition;
 
     }
