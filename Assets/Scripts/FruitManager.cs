@@ -11,7 +11,7 @@ public class FruitManager : MonoBehaviour {
 	public GameObject rottenFruit;
 	GameObject currentObject;
 	List<GameObject> myList = new List<GameObject>();
-	//List<Transform> myTransform = new List<Transform>();
+	string messageReceived;
 
 	void Start ()
 	{
@@ -20,11 +20,13 @@ public class FruitManager : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyUp (KeyCode.C)) {
+		if (playerHealth.currentHealth == playerHealth.startingHealth) {
 			InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
 		}
 
-		if (Input.GetKeyDown (KeyCode.C)) {
+        messageReceived = GetComponent<UDPReceive>().getLatestUDPPacket();
+
+        if (messageReceived == "Candy Gods Help Us\n") {
 			CancelInvoke ("Spawn");
 			switchObject();
 		}
@@ -33,10 +35,6 @@ public class FruitManager : MonoBehaviour {
 
 	void Spawn ()
 	{
-		// If the player has no health left...
-
-	
-
 		currentObject = (GameObject)Instantiate(fruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
 		myList.Add (currentObject);
 		//myTransform.Add (currentObject.transform);

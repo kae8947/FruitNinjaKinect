@@ -7,44 +7,20 @@ public class TrackHand : MonoBehaviour
 {
     public GameObject bodySourceManager;
     public GameObject objectToMove;
+    private Vector3 originalObjectToMovePos;
 
     private Dictionary<ulong, ulong> _Bodies = new Dictionary<ulong, ulong>();
     private BodySourceManager _BodyManager;
 
-    private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
+    void Start()
     {
-        { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
-        { Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
-        { Kinect.JointType.KneeLeft, Kinect.JointType.HipLeft },
-        { Kinect.JointType.HipLeft, Kinect.JointType.SpineBase },
-
-        { Kinect.JointType.FootRight, Kinect.JointType.AnkleRight },
-        { Kinect.JointType.AnkleRight, Kinect.JointType.KneeRight },
-        { Kinect.JointType.KneeRight, Kinect.JointType.HipRight },
-        { Kinect.JointType.HipRight, Kinect.JointType.SpineBase },
-
-        { Kinect.JointType.HandTipLeft, Kinect.JointType.HandLeft },
-        { Kinect.JointType.ThumbLeft, Kinect.JointType.HandLeft },
-        { Kinect.JointType.HandLeft, Kinect.JointType.WristLeft },
-        { Kinect.JointType.WristLeft, Kinect.JointType.ElbowLeft },
-        { Kinect.JointType.ElbowLeft, Kinect.JointType.ShoulderLeft },
-        { Kinect.JointType.ShoulderLeft, Kinect.JointType.SpineShoulder },
-
-        { Kinect.JointType.HandTipRight, Kinect.JointType.HandRight },
-        { Kinect.JointType.ThumbRight, Kinect.JointType.HandRight },
-        { Kinect.JointType.HandRight, Kinect.JointType.WristRight },
-        { Kinect.JointType.WristRight, Kinect.JointType.ElbowRight },
-        { Kinect.JointType.ElbowRight, Kinect.JointType.ShoulderRight },
-        { Kinect.JointType.ShoulderRight, Kinect.JointType.SpineShoulder },
-
-        { Kinect.JointType.SpineBase, Kinect.JointType.SpineMid },
-        { Kinect.JointType.SpineMid, Kinect.JointType.SpineShoulder },
-        { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
-        { Kinect.JointType.Neck, Kinect.JointType.Head },
-    };
+        originalObjectToMovePos = Camera.main.WorldToScreenPoint(objectToMove.transform.position);
+    }
 
     void Update()
     {
+        //Debug.Log("target is " + Camera.main.WorldToScreenPoint(objectToMove.transform.position).x + " pixels from the left");
+
         if (bodySourceManager == null)
         {
             return;
@@ -101,32 +77,84 @@ public class TrackHand : MonoBehaviour
                     _Bodies[body.TrackingId] = body.TrackingId;
                 }
 
-                RefreshBodyObject(body, Kinect.JointType.HandRight);
+                MoveObjectWithJoint(body, Kinect.JointType.HandRight, Kinect.JointType.ShoulderRight);
             }
         }
     }
 
-    private void RefreshBodyObject(Kinect.Body body, Kinect.JointType jt)
+    private void MoveObjectWithJoint(Kinect.Body body, Kinect.JointType hand, Kinect.JointType elbow)
     {
-        Kinect.Joint sourceJoint = body.Joints[jt];
-        Kinect.Joint? targetJoint = null;
+        Kinect.Joint? handJoint = null;
+        Kinect.Joint? elbowJoint = null;
 
-        if (_BoneMap.ContainsKey(jt))
+        handJoint = body.Joints[hand];
+        elbowJoint = body.Joints[elbow];
+
+        if (handJoint.HasValue && elbowJoint.HasValue)
         {
-            targetJoint = body.Joints[_BoneMap[jt]];
-        }
+            if (body.HandRightState != Kinect.HandState.Closed)
+            {
+                float horizontal = (handJoint.Value.Position.X - elbowJoint.Value.Position.X);
+                float vertical = (handJoint.Value.Position.Y - elbowJoint.Value.Position.Y);
 
-        if (targetJoint.HasValue)
-        {
-            Vector3 handPosition = GetVector3FromJoint(targetJoint.Value);
-            handPosition.z = objectToMove.transform.localPosition.z;
-            objectToMove.transform.localPosition = handPosition;
-        }
+                Vector3 newPos = new Vector3(
+                    transform.localPosition.x + horizontal,
+                    transform.localPosition.y + vertical,
+                    transform.localPosition.z);
 
+                Vector3 colliderSize = GetComponent<BoxCollider>().size;
+
+                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 2.0f), newPos.y + (colliderSize.y / 2.0f), newPos.z);
+                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 2.0f), newPos.y - (colliderSize.y / 2.0f), newPos.z);
+
+                Vector3 newTopLeftPosWorldPoint = transform.TransformPoint(newPosTopLeft);
+                Vector3 newBottomRightPosWorldPoint = transform.TransformPoint(newPosBottomRight);
+
+                Vector3 newTopLeftPosInScreenPoint = Camera.main.WorldToScreenPoint(newTopLeftPosWorldPoint);
+                Vector3 newBottomRightPosInScreenPoint = Camera.main.WorldToScreenPoint(newBottomRightPosWorldPoint);
+
+                Vector3 curPostion = transform.localPosition;
+
+                // Check vertical bounds of object
+                //if (newTopLeftPosInScreenPoint.y < Camera.main.pixelHeight && newBottomRightPosInScreenPoint.y > 0)
+                //{
+                //    curPostion.y = newPos.y;
+                //}
+                //else
+                //{
+                //    if (newTopLeftPosInScreenPoint.y > Camera.main.pixelHeight)
+                //    {
+                //        curPostion.y -= 5.0f;
+                //    }
+                //    else
+                //    {
+                //        curPostion.y += 5.0f;
+                //    }
+                //}
+
+                if (newBottomRightPosInScreenPoint.x < Camera.main.pixelWidth && newTopLeftPosInScreenPoint.x > -0.1)
+                {
+                    curPostion.x = newPos.x;
+                }
+                else
+                {
+                    if (newBottomRightPosInScreenPoint.x > Camera.main.pixelWidth)
+                    {
+                        curPostion.x -= 1.0f;
+                    }
+                    else
+                    {
+                        curPostion.x += 1.0f;
+                    }
+                }
+
+                transform.localPosition = curPostion;
+            }
+        }
     }
 
-    private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
+    private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float scaleFactor)
     {
-        return new Vector3(joint.Position.X * 20, joint.Position.Y * 20, joint.Position.Z * 20);
+        return new Vector3(joint.Position.X * 10 * scaleFactor, joint.Position.Y * 10 * scaleFactor, joint.Position.Z * 10 * scaleFactor);
     }
 }

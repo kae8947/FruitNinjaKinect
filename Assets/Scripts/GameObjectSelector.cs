@@ -26,6 +26,8 @@ public class GameObjectSelector : MonoBehaviour {
         Debug.DrawRay(Camera.main.transform.position, dir * 10, Color.yellow);
         bool selectingObject = false;
 
+        LayerMask mask = new LayerMask();
+
         //if (Physics.Raycast(ray, out hit, distanceToCheck))
         if (Physics.Raycast(Camera.main.transform.position, dir, out hit, distanceToCheck))
         {

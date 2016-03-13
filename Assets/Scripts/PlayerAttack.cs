@@ -70,7 +70,7 @@ public class PlayerAttack : MonoBehaviour {
 		}*/
 	}
 
-	void Split(){
+	void ThrowStar(){
 	
 	}
 }
