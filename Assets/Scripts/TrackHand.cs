@@ -7,12 +7,20 @@ public class TrackHand : MonoBehaviour
 {
     public GameObject bodySourceManager;
     public GameObject objectToMove;
+    private Vector3 originalObjectToMovePos;
 
     private Dictionary<ulong, ulong> _Bodies = new Dictionary<ulong, ulong>();
     private BodySourceManager _BodyManager;
 
+    void Start()
+    {
+        originalObjectToMovePos = Camera.main.WorldToScreenPoint(objectToMove.transform.position);
+    }
+
     void Update()
     {
+        //Debug.Log("target is " + Camera.main.WorldToScreenPoint(objectToMove.transform.position).x + " pixels from the left");
+
         if (bodySourceManager == null)
         {
             return;
@@ -74,8 +82,6 @@ public class TrackHand : MonoBehaviour
         }
     }
 
-    float firstdeep = -1.0f;
-
     private void MoveObjectWithJoint(Kinect.Body body, Kinect.JointType hand, Kinect.JointType elbow)
     {
         Kinect.Joint? handJoint = null;
@@ -86,42 +92,63 @@ public class TrackHand : MonoBehaviour
 
         if (handJoint.HasValue && elbowJoint.HasValue)
         {
-            //Vector3 handPosition = GetVector3FromJoint(targetJoint.Value, 20);
-            //handPosition.z = objectToMove.transform.localPosition.z;
-            //objectToMove.transform.localPosition = handPosition;
-
             if (body.HandRightState != Kinect.HandState.Closed)
             {
-                //float horizontal = handJoint.Value.Position.X * 0.7f;
-                //float vertical = handJoint.Value.Position.Y * 0.1f;
-                //float deep = 0;
-
-                float horizontal = (handJoint.Value.Position.X - elbowJoint.Value.Position.X) * 0.4f;
-                float vertical = (handJoint.Value.Position.Y - elbowJoint.Value.Position.Y) * 0.4f;
-                float deep = 0;
-
-                if (firstdeep == -1)
-                {
-                    firstdeep = handJoint.Value.Position.Z * 0.05f;
-                }
-
-                deep = handJoint.Value.Position.Z * 0.05f - firstdeep;
-
-                float newHorizontal = this.gameObject.transform.localPosition.x + horizontal;
-                float newVertical = this.gameObject.transform.localPosition.y + vertical;
-
-                //float newHorizontal = horizontal;
-                //float newVertical = vertical;
+                float horizontal = (handJoint.Value.Position.X - elbowJoint.Value.Position.X);
+                float vertical = (handJoint.Value.Position.Y - elbowJoint.Value.Position.Y);
 
                 Vector3 newPos = new Vector3(
-                    newHorizontal,
-                    newVertical,
-                    //this.transform.position.z - deep);
-                    this.transform.localPosition.z);
+                    transform.localPosition.x + horizontal,
+                    transform.localPosition.y + vertical,
+                    transform.localPosition.z);
 
-                //newPos = bounds.ClosestPoint(newPos);
+                Vector3 colliderSize = GetComponent<BoxCollider>().size;
 
-                this.gameObject.transform.localPosition = newPos;
+                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 2.0f), newPos.y + (colliderSize.y / 2.0f), newPos.z);
+                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 2.0f), newPos.y - (colliderSize.y / 2.0f), newPos.z);
+
+                Vector3 newTopLeftPosWorldPoint = transform.TransformPoint(newPosTopLeft);
+                Vector3 newBottomRightPosWorldPoint = transform.TransformPoint(newPosBottomRight);
+
+                Vector3 newTopLeftPosInScreenPoint = Camera.main.WorldToScreenPoint(newTopLeftPosWorldPoint);
+                Vector3 newBottomRightPosInScreenPoint = Camera.main.WorldToScreenPoint(newBottomRightPosWorldPoint);
+
+                Vector3 curPostion = transform.localPosition;
+
+                // Check vertical bounds of object
+                //if (newTopLeftPosInScreenPoint.y < Camera.main.pixelHeight && newBottomRightPosInScreenPoint.y > 0)
+                //{
+                //    curPostion.y = newPos.y;
+                //}
+                //else
+                //{
+                //    if (newTopLeftPosInScreenPoint.y > Camera.main.pixelHeight)
+                //    {
+                //        curPostion.y -= 5.0f;
+                //    }
+                //    else
+                //    {
+                //        curPostion.y += 5.0f;
+                //    }
+                //}
+
+                if (newBottomRightPosInScreenPoint.x < Camera.main.pixelWidth && newTopLeftPosInScreenPoint.x > -0.1)
+                {
+                    curPostion.x = newPos.x;
+                }
+                else
+                {
+                    if (newBottomRightPosInScreenPoint.x > Camera.main.pixelWidth)
+                    {
+                        curPostion.x -= 1.0f;
+                    }
+                    else
+                    {
+                        curPostion.x += 1.0f;
+                    }
+                }
+
+                transform.localPosition = curPostion;
             }
         }
     }
@@ -129,15 +156,5 @@ public class TrackHand : MonoBehaviour
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint, float scaleFactor)
     {
         return new Vector3(joint.Position.X * 10 * scaleFactor, joint.Position.Y * 10 * scaleFactor, joint.Position.Z * 10 * scaleFactor);
-    }
-
-    public Bounds OrthographicBounds(Camera camera)
-    {
-        float screenAspect = (float)Screen.width / (float)Screen.height;
-        float cameraHeight = camera.orthographicSize * 2;
-        Bounds bounds = new Bounds(
-            camera.transform.position,
-            new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
-        return bounds;
     }
 }

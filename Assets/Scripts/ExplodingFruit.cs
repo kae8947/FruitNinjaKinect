@@ -66,6 +66,7 @@ public class ExplodingFruit : MonoBehaviour
 			return;
 			
 		splashSounds[ UnityEngine.Random.Range(0, splashSounds.Length ) ].Play();
+
 		
 		float force = forceVector.HasValue ? forceVector.Value.magnitude : defaultExplosionForce;
 		Vector3 hitForce = forceVector ?? Vector3.zero;

@@ -16,7 +16,6 @@ public class FruitManager : MonoBehaviour {
 	void Start ()
 	{
 		InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
-		messageReceived = GetComponent<UDPReceive> ().getLatestUDPPacket();
 	}
 
 	void Update(){
@@ -25,7 +24,9 @@ public class FruitManager : MonoBehaviour {
 			InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
 		}
 
-		if (messageReceived == "Candy God Help Me") {
+        messageReceived = GetComponent<UDPReceive>().getLatestUDPPacket();
+
+        if (messageReceived == "Candy Gods Help Us\n") {
 			CancelInvoke ("Spawn");
 			switchObject();
 		}
@@ -34,13 +35,6 @@ public class FruitManager : MonoBehaviour {
 
 	void Spawn ()
 	{
-		// If the player has no health left...
-
-		/*if (playerHealth.currentHealth <= 0f)
-		{
-			return;
-		}*/
-
 		currentObject = (GameObject)Instantiate(fruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
 		myList.Add (currentObject);
 	}

@@ -5889,6 +5889,7 @@ GameObject:
   - 114: {fileID: 1139442336}
   - 114: {fileID: 1139442335}
   - 114: {fileID: 1139442337}
+  - 114: {fileID: 1139442334}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -6156,6 +6157,22 @@ Transform:
   - {fileID: 1949728854}
   m_Father: {fileID: 0}
   m_RootOrder: 23
+--- !u!114 &1139442334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139442325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b0f4d0d9406b84bbddcfb9208f1f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodySourceManager: {fileID: 86450455}
+  sideTollerance: 0.7
+  forwardTollerance: 0.5
+  turnSpeed: 100
+  moveSpeed: 10
 --- !u!114 &1139442335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9238,7 +9255,7 @@ MonoBehaviour:
   tagsToSelect:
   - Shootable
   - Pick Up
-  distanceToCheck: 100
+  distanceToCheck: 1000
   pointToCheck: {fileID: 1133863160}
 --- !u!4 &1949728854
 Transform:
@@ -9759,7 +9776,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalPosition.z
@@ -9791,9 +9808,37 @@ Prefab:
       objectReference: {fileID: 86450455}
     - target: {fileID: 176178, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11410522, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572878, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Center.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6572878, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572878, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 176178, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Name
+      value: ninja throwing star 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6572878, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11425950, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+    - {fileID: 9579414, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+    - {fileID: 11468572, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+    - {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &2090798624
