@@ -36,14 +36,13 @@ public class FruitManager : MonoBehaviour {
 	{
 		// If the player has no health left...
 
-		if (playerHealth.currentHealth <= 0f)
+		/*if (playerHealth.currentHealth <= 0f)
 		{
 			return;
-		}
+		}*/
 
 		currentObject = (GameObject)Instantiate(fruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
 		myList.Add (currentObject);
-		//myTransform.Add (currentObject.transform);
 	}
 
 	void switchObject(){
