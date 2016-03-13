@@ -516,8 +516,8 @@ GameObject:
   - 223: {fileID: 105455967}
   - 114: {fileID: 105455966}
   - 114: {fileID: 105455965}
-  - 95: {fileID: 105455964}
   - 114: {fileID: 105455963}
+  - 95: {fileID: 105455964}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -536,18 +536,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc501be945887343b049d5eb1274eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 689487101}
+  playerHealth: {fileID: 1139442327}
 --- !u!95 &105455964
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9503868, guid: 3f7a90e9176e92547bcc70895bf6c9b5,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105455962}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89d24230527095341b236f18c55619da, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1a31af5efdbed764ea05cb9e40fc76e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1719,6 +1718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 523dec607a7544941abaaff5784e8da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slicing: 0
 --- !u!114 &364757275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1731,6 +1731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4b02dae47dc4b4c860a485254aef21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitting: 0
 --- !u!95 &364757276
 Animator:
   serializedVersion: 3
@@ -1775,7 +1776,7 @@ GameObject:
   m_Layer: 0
   m_Name: GrapeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2787,6 +2788,8 @@ MonoBehaviour:
   playerHealth: {fileID: 689487101}
   scoreValue: 10
   healthValue: 20
+  inSpace: 0
+  boolBoy: {fileID: 0}
 --- !u!54 &689487096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5947,6 +5950,8 @@ MonoBehaviour:
   playerHealth: {fileID: 689487101}
   scoreValue: 10
   healthValue: 50
+  inSpace: 0
+  boolBoy: {fileID: 0}
 --- !u!82 &1139442329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6204,6 +6209,8 @@ MonoBehaviour:
   playerHealth: {fileID: 689487101}
   scoreValue: 10
   healthValue: 20
+  inSpace: 0
+  boolBoy: {fileID: 0}
 --- !u!114 &1139442337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6614,7 +6621,7 @@ GameObject:
   m_Layer: 0
   m_Name: OrangeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9481,7 +9488,7 @@ GameObject:
   m_Layer: 0
   m_Name: StawberrySpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
