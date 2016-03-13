@@ -5,7 +5,7 @@ using System;
 public class ThrowStar : MonoBehaviour {
 
 	public Rigidbody starPrefab;
-	public float Star_forward_Force = 1000;
+	public float Star_forward_Force = 1000f;
 	public float distanceToCheck = 100f;
 
 

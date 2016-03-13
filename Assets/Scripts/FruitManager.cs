@@ -37,7 +37,6 @@ public class FruitManager : MonoBehaviour {
 	{
 		currentObject = (GameObject)Instantiate(fruit, spawnPoints.position, Quaternion.LookRotation((player.position - spawnPoints.position)));
 		myList.Add (currentObject);
-		//myTransform.Add (currentObject.transform);
 	}
 
 	void switchObject(){
