@@ -48,14 +48,14 @@ public class RUISFutureGestureRecognizer : RUISGestureRecognizer
     private RUISPointTracker pointTrackerLeftHand;
     private RUISPointTracker pointTrackerRightHand;
     private RUISPointTracker pointTrackerHead;
-    /*private RUISSkeletonController skeletonController;*/
+    private RUISSkeletonController skeletonController;
 
     private bool previousIsTracking = false;
     private bool isTrackingBufferTimeFinished = false;
 
     public void Awake()
     {
-		/*skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;*/
+		skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;
         pointTrackerLeftHand = leftHandWithPointTracker.GetComponent<RUISPointTracker>();
         pointTrackerRightHand = rightHandWithPointTracker.GetComponent<RUISPointTracker>();
         pointTrackerHead = headPointTracker.GetComponent<RUISPointTracker>();
@@ -64,7 +64,7 @@ public class RUISFutureGestureRecognizer : RUISGestureRecognizer
     }
 	public void Start() {
 		
-		/*bodyTrackingDeviceID = skeletonController.bodyTrackingDeviceID;*/
+		bodyTrackingDeviceID = skeletonController.bodyTrackingDeviceID;
 	}
     public void Update()
     {
