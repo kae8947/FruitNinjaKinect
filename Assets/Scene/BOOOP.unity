@@ -516,8 +516,8 @@ GameObject:
   - 223: {fileID: 105455967}
   - 114: {fileID: 105455966}
   - 114: {fileID: 105455965}
-  - 95: {fileID: 105455964}
   - 114: {fileID: 105455963}
+  - 95: {fileID: 105455964}
   m_Layer: 5
   m_Name: HUDCanvas
   m_TagString: Untagged
@@ -541,13 +541,12 @@ MonoBehaviour:
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9503868, guid: 3f7a90e9176e92547bcc70895bf6c9b5,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 105455962}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 89d24230527095341b236f18c55619da, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1a31af5efdbed764ea05cb9e40fc76e9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1778,7 +1777,7 @@ GameObject:
   m_Layer: 0
   m_Name: GrapeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: -1412012063857583412}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6651,7 +6650,7 @@ GameObject:
   m_Layer: 0
   m_Name: OrangeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2974397684917235467}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9518,7 +9517,7 @@ GameObject:
   m_Layer: 0
   m_Name: StawberrySpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
