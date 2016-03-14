@@ -22,7 +22,7 @@ using System.Threading;
 
 public class UDPReceive : MonoBehaviour
 {
-
+    public bool showOnGui = false;
     // receiving Thread
     Thread receiveThread;
 
@@ -63,14 +63,17 @@ public class UDPReceive : MonoBehaviour
     // OnGUI
     void OnGUI()
     {
-        Rect rectObj = new Rect(40, 10, 200, 400);
-        GUIStyle style = new GUIStyle();
-        style.alignment = TextAnchor.UpperLeft;
-        GUI.Box(rectObj, "# UDPReceive\n127.0.0.1 " + port + " #\n"
-                    + "shell> nc -u 127.0.0.1 : " + port + " \n"
-                    + "\nLast Packet: \n" + lastReceivedUDPPacket
-                    + "\n\nAll Messages: \n" + allReceivedUDPPackets
-                , style);
+        if (showOnGui)
+        {
+            Rect rectObj = new Rect(40, 10, 200, 400);
+            GUIStyle style = new GUIStyle();
+            style.alignment = TextAnchor.UpperLeft;
+            GUI.Box(rectObj, "# UDPReceive\n127.0.0.1 " + port + " #\n"
+                        + "shell> nc -u 127.0.0.1 : " + port + " \n"
+                        + "\nLast Packet: \n" + lastReceivedUDPPacket
+                        + "\n\nAll Messages: \n" + allReceivedUDPPackets
+                    , style);
+        }
     }
 
     // init
