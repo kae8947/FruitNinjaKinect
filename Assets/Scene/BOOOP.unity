@@ -6693,7 +6693,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139442325}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
@@ -9427,6 +9427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 301f37fe01893db45a6f5ea269216fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showOnGui: 0
   port: 0
   lastReceivedUDPPacket: 
   allReceivedUDPPackets: 
@@ -10046,7 +10047,7 @@ MonoBehaviour:
   - Shootable
   - Pick Up
   - Shootable2
-  distanceToCheck: 1000
+  distanceToCheck: 200
   pointToCheck: {fileID: 1133863160}
 --- !u!4 &1949728854
 Transform:

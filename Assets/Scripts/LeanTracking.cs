@@ -139,19 +139,19 @@ public class LeanTracking : MonoBehaviour
                     // Positive is away from Kinect
                     if (head > spineMid)
                     {
-                        CharacterController controller = transform.parent.GetComponent<CharacterController>();
-                        controller.SimpleMove(-Vector3.forward * moveSpeed * Time.deltaTime);
+                        //CharacterController controller = transform.parent.GetComponent<CharacterController>();
+                        //controller.SimpleMove(-Vector3.forward * moveSpeed * Time.deltaTime);
 
-                        //transform.parent.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+                        transform.parent.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
                         // Leaning backward
                         return LeanType.Backward;
                     }
                     else
                     {
-                        CharacterController controller = transform.parent.GetComponent<CharacterController>();
-                        controller.SimpleMove(Vector3.forward * moveSpeed * Time.deltaTime);
+                        //CharacterController controller = transform.parent.GetComponent<CharacterController>();
+                        //controller.SimpleMove(Vector3.forward * moveSpeed * Time.deltaTime);
 
-                        //transform.parent.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+                        transform.parent.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
                         // Leaning forward
                         return LeanType.Forward;
                     }
