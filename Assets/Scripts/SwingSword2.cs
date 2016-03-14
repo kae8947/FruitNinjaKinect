@@ -17,14 +17,14 @@ public class SwingSword2 : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
 
-
+            anim.SetTrigger("Swing02");
             slicing = true;
 
         }
 
         if (slicing)
         {
-            anim.SetTrigger("Swing02");
+           
             StartCoroutine(Waiting());
 
 
