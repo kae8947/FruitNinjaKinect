@@ -12,16 +12,20 @@ public class FruitAttack : MonoBehaviour {
 	//EnemyHealth enemyHealth;                    
 	bool playerInRange;                        
 	float timer;
-    SwingSword slash;
-    SwingSword2 slice;
+    public SwingSword slash;
+    public SwingSword2 slice;
 
     void Awake ()
 	{
 		// Setting up the references.
 		player = GameObject.FindGameObjectWithTag ("Player");
-		playerHealth = player.GetComponent <PlayerHealth> ();
-        slash = GetComponentInChildren<SwingSword>();
+        GameObject.Find("Player");
+
+        playerHealth = player.GetComponent <PlayerHealth> ();
+        slash = player.GetComponentInChildren<SwingSword>();
+        
         slice = GetComponentInChildren<SwingSword2>();
+
     }
 
 
@@ -54,8 +58,8 @@ public class FruitAttack : MonoBehaviour {
 		// Add the time since Update was last called to the timer.
 		timer += Time.deltaTime;
 
-		// If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
-		if(timer >= timeBetweenAttacks && playerInRange)
+        // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
+        if (timer >= timeBetweenAttacks && playerInRange)
 		{
 			// ... attack.
 			Attack ();
@@ -68,11 +72,18 @@ public class FruitAttack : MonoBehaviour {
 		// Reset the timer.
 		timer = 0f;
 
-		// If the player has health to lose...
-		if(playerHealth.currentHealth > 0)
+        // If the player has health to lose...
+        if (playerHealth.currentHealth > 0)
 		{
-			// ... damage the player.
-			playerHealth.TakeDamage (attackDamage);
+            // ... damage the player.
+            if (slash.hitting == false)
+            {
+                playerHealth.TakeDamage(attackDamage);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
 		}
 	}
 }
