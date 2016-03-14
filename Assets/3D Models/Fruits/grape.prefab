@@ -955,6 +955,7 @@ GameObject:
   - 136: {fileID: 13693140}
   - 135: {fileID: 13549458}
   - 114: {fileID: 11424828}
+  - 64: {fileID: 6451530}
   m_Layer: 10
   m_Name: grape
   m_TagString: Shootable2
@@ -5849,6 +5850,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!64 &6451530
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 1
+  m_Mesh: {fileID: 0}
 --- !u!111 &11198400
 Animation:
   m_ObjectHideFlags: 1
@@ -5888,6 +5901,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 10
+  slash: {fileID: 0}
+  slice: {fileID: 0}
 --- !u!135 &13549458
 SphereCollider:
   m_ObjectHideFlags: 1

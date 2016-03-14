@@ -6273,7 +6273,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139442325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.35071, y: 0.9, z: 50.430176}
+  m_LocalPosition: {x: 74.4, y: 0.9, z: 50.430176}
   m_LocalScale: {x: 0.2927866, y: 0.8222516, z: 0.33222908}
   m_Children:
   - {fileID: 214705572}
@@ -6346,7 +6346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   Star_forward_Force: 1000
-  distanceToCheck: 100
 --- !u!1 &1148083215
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,7 +6742,7 @@ GameObject:
   m_Layer: 0
   m_Name: OrangeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9910,7 +9909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 8.23
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalRotation.x
