@@ -115,46 +115,53 @@ public class LeanTracking : MonoBehaviour
             Debug.Log("ShoulderDiff = " + shoulderDiff + "\n" + "ForwardDiff = " + forwardDiff);
         }
 
-        if (shoulderDiff > sideTollerance)
+        if (body.HandLeftState == Kinect.HandState.Closed)
         {
-            if (shoulderLeft > shoulderRight)
+            if (shoulderDiff > sideTollerance)
             {
-                transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
-                // Leaning Right
-                return LeanType.Right;
+                if (shoulderLeft > shoulderRight)
+                {
+                    transform.parent.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+                    // Leaning Right
+                    return LeanType.Right;
+                }
+                else
+                {
+                    transform.parent.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+                    // Leaning Left
+                    return LeanType.Left;
+                }
             }
             else
             {
-                transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
-                // Leaning Left
-                return LeanType.Left;
+                if (forwardDiff > forwardTollerance)
+                {
+                    // Positive is away from Kinect
+                    if (head > spineMid)
+                    {
+                        transform.parent.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+                        // Leaning backward
+                        return LeanType.Backward;
+                    }
+                    else
+                    {
+                        transform.parent.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+                        // Leaning forward
+                        return LeanType.Forward;
+                    }
+
+                }
+                else
+                {
+                    // No Direction
+                    return LeanType.Straight;
+                }
+
             }
         }
         else
         {
-            if (forwardDiff > forwardTollerance)
-            {
-                // Positive is away from Kinect
-                if (head > spineMid)
-                {
-                    transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
-                    // Leaning backward
-                    return LeanType.Backward;
-                }
-                else
-                {
-                    transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-                    // Leaning forward
-                    return LeanType.Forward;
-                }
-                
-            }
-            else
-            {
-                // No Direction
-                return LeanType.Straight;
-            }
-
+            return LeanType.Straight;
         }
     }
 

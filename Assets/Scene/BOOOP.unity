@@ -406,7 +406,28 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 5
+  m_RootOrder: 7
+--- !u!1 &98444523 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
+  m_PrefabInternal: {fileID: 1638895230}
+--- !u!114 &98444524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98444523}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8a1842b17cd3b4e9fa276fc904b187, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  bodyTrackingDeviceID: 0
+  requiredUpwardVelocity: 1
+  timeBetweenJumps: 0.4
+  feetHeightThreshold: 0.125
+  requiredConfidence: 1
 --- !u!1 &98892731
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +886,7 @@ Transform:
   m_LocalScale: {x: 0.2927866, y: 0.8222516, z: 0.33222908}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!1 &173510767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1192,67 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1025647097}
   m_Script: {fileID: 11500000, guid: 8ba5d0b33b29a08498d43e888b2eb0d8, type: 3}
+--- !u!1 &248031277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 248031280}
+  - 114: {fileID: 248031279}
+  - 114: {fileID: 248031278}
+  m_Layer: 0
+  m_Name: BlastRecognizer Right Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &248031278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248031277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680a78d18bbe22642a40357e6b890ae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  bodyTrackingDeviceID: 0
+  maxMovementVelocity: 1
+  timeBetweenRecognitions: 0.75
+  handPositionMinDistanceInfront: 0.2
+  handPositionSideToSideThreshold: 0.2
+  handPositionUpDownThreshold: 0.2
+  requiredConfidence: 1
+  leftHandWithPointTracker: {fileID: 1264633390}
+--- !u!114 &248031279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248031277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5dba8c14fa8e6448b9a1a16d33fe05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferLength: 0.1
+--- !u!4 &248031280
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248031277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1139442333}
+  m_RootOrder: 2
 --- !u!1 &263508814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,7 +1560,7 @@ GameObject:
   - 114: {fileID: 335540781}
   - 114: {fileID: 335540780}
   m_Layer: 0
-  m_Name: BlastRecognizer
+  m_Name: BlastRecognizer Left Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1495,7 +1577,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!114 &335540780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1831,7 @@ Transform:
   - {fileID: 1817609732}
   - {fileID: 1321021733}
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!120 &364757271
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1807,6 +1889,7 @@ MonoBehaviour:
   player: {fileID: 1139442325}
   target: {fileID: 0}
   gameObjectSelector: {fileID: 1949728853}
+  grapple: {fileID: 335540780}
 --- !u!114 &364757273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,6 +1935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hitting: 0
+  swing: {fileID: 248031278}
 --- !u!95 &364757276
 Animator:
   serializedVersion: 3
@@ -2041,7 +2125,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!114 &441201492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,6 +2572,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 64459590}
   m_RootOrder: 0
+--- !u!1 &610963848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 610963849}
+  - 114: {fileID: 610963851}
+  - 114: {fileID: 610963850}
+  m_Layer: 0
+  m_Name: FutureRecognizer - Swing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &610963849
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 610963848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1139442333}
+  m_RootOrder: 0
+--- !u!114 &610963850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 610963848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6601b28ac282e674189502d1e52e670d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
+  bodyTrackingDeviceID: 0
+  timeBetweenRecognitions: 0.5
+  handPositionDifferenceThreshold: 0.2
+  requiredConfidence: 0.5
+  leftHandWithPointTracker: {fileID: 1264633390}
+  rightHandWithPointTracker: {fileID: 1243496856}
+  headPointTracker: {fileID: 1539684660}
+--- !u!114 &610963851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 610963848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5dba8c14fa8e6448b9a1a16d33fe05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bufferLength: 0.1
 --- !u!1 &613661117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3562,7 +3706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!114 &759603831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5761,7 +5905,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 6fad6e06135894d4da88e7273313f430, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2000004, guid: 6fad6e06135894d4da88e7273313f430, type: 2}
       propertyPath: field of view
@@ -6210,7 +6354,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 6
+  m_RootOrder: 8
 --- !u!114 &1126322635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6400,8 +6544,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 2.201933}
-  m_Center: {x: 0.021080017, y: 0.22235942, z: 0.18193817}
+  m_Size: {x: 4, y: 3.6363196, z: 2.201933}
+  m_Center: {x: 0.021080017, y: 0.4041996, z: 0.18193817}
 --- !u!114 &1139442327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6651,7 +6795,9 @@ Transform:
   m_LocalPosition: {x: 74.4, y: 1.5, z: 52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 610963849}
   - {fileID: 2110591639}
+  - {fileID: 248031280}
   - {fileID: 335540779}
   - {fileID: 1638895231}
   - {fileID: 759603830}
@@ -6747,7 +6893,7 @@ MonoBehaviour:
   ignorePitchAndRoll: 1
   groundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   groundedErrorTweaker: 0.05
   dynamicFriction: 1
   dynamicMaterial: {fileID: 0}
@@ -8433,7 +8579,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
       propertyPath: requiredUpwardVelocity
@@ -8446,6 +8592,10 @@ Prefab:
     - target: {fileID: 100000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
       propertyPath: m_Name
       value: JumpRecognizer
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97ddcab1c5f76ec4299ad0fc906ab15e, type: 2}
@@ -9907,7 +10057,7 @@ Transform:
   m_Children:
   - {fileID: 864144432}
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 10
+  m_RootOrder: 12
 --- !u!1 &1954579769
 GameObject:
   m_ObjectHideFlags: 0
@@ -10443,7 +10593,7 @@ Transform:
   m_Children:
   - {fileID: 1511579486}
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!1 &2083560428
 GameObject:
   m_ObjectHideFlags: 0
@@ -10714,7 +10864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &2110591640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10728,9 +10878,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   bodyTrackingDeviceID: 0
-  timeBetweenRecognitions: 1
-  handPositionDifferenceThreshold: 0.1
-  requiredConfidence: 1
+  timeBetweenRecognitions: 0.5
+  handPositionDifferenceThreshold: 0.2
+  requiredConfidence: 0.5
   leftHandWithPointTracker: {fileID: 1243496856}
   rightHandWithPointTracker: {fileID: 1264633390}
   headPointTracker: {fileID: 1539684660}

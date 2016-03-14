@@ -6,6 +6,8 @@ public class SwingSword : MonoBehaviour {
     public bool hitting = false;
     private float atSword;
     private float atSwordTime = 2f;
+    public RUISGestureRecognizer swing;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -15,7 +17,7 @@ public class SwingSword : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) || swing.GestureIsTriggered())
         {
 
             anim.SetTrigger("Swing01");
