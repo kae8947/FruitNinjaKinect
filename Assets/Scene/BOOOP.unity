@@ -1845,7 +1845,7 @@ LineRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 894666d74d19a9248a04ea3ecb80d63f, type: 2}
+  - {fileID: 2100000, guid: 414b82bd5b4919b4e9431339279e9f1f, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1865,8 +1865,8 @@ LineRenderer:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   m_Parameters:
-    startWidth: 0.2
-    endWidth: 0.2
+    startWidth: 1
+    endWidth: 1
     m_StartColor:
       serializedVersion: 2
       rgba: 4278190331
@@ -2144,6 +2144,10 @@ MonoBehaviour:
   forwardTollerance: 0.6
   turnSpeed: 150
   moveSpeed: 10
+--- !u!1 &456144347 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
+  m_PrefabInternal: {fileID: 1937278441}
 --- !u!1001 &488063092
 Prefab:
   m_ObjectHideFlags: 0
@@ -3724,7 +3728,7 @@ MonoBehaviour:
   playerId: 0
   bodyTrackingDeviceID: 0
   maxMovementVelocity: 0.3
-  timeBetweenRecognitions: 0.3
+  timeBetweenRecognitions: 0.1
   handPositionDifferenceThreshold: 0.2
   requiredConfidence: 1
   leftHandWithPointTracker: {fileID: 1243496856}
@@ -6529,6 +6533,8 @@ GameObject:
   - 114: {fileID: 1139442338}
   - 114: {fileID: 1139442328}
   - 114: {fileID: 1139442334}
+  - 114: {fileID: 1139442340}
+  - 120: {fileID: 1139442339}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -6901,6 +6907,61 @@ MonoBehaviour:
   dynamicFriction: 1
   dynamicMaterial: {fileID: 0}
   feetAlsoAffectGrounding: 1
+--- !u!120 &1139442339
+LineRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139442325}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 2ab9d34213979254dbd0700eaf6e2a79, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  m_Parameters:
+    startWidth: 0.2
+    endWidth: 0.2
+    m_StartColor:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_EndColor:
+      serializedVersion: 2
+      rgba: 4294967295
+  m_UseWorldSpace: 1
+--- !u!114 &1139442340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1139442325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c162dbef8dc37408437fff2aa72f70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {fileID: 1139442333}
+  endPos: {fileID: 82083681}
+  find: 1
+  player: {fileID: 1139442325}
+  target: {fileID: 456144347}
 --- !u!1 &1148083215
 GameObject:
   m_ObjectHideFlags: 0
@@ -9944,7 +10005,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.6
+      value: 45.32
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9952,7 +10013,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.2
+      value: 49.4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9985,6 +10046,10 @@ Prefab:
     - target: {fileID: 400000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b6c3d01c33718b45bf7737e8c87415d, type: 3}

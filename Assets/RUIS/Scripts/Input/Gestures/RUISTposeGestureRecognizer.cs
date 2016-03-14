@@ -51,6 +51,8 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
     private bool previousIsTracking = false;
     private bool isTrackingBufferTimeFinished = false;
 
+    int count = 0;
+
     public void Awake()
     {
         skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;
@@ -140,6 +142,15 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
 
     private void DoAfterTPose()
     {
+        for (int i = 0; i < count; ++i)
+        {
+            Vector3 pos = transform.parent.position;
+            pos.y -= 4;
+            transform.parent.position = pos;
+        }
+
+        count = 0;
+
         timeCounter += Time.deltaTime;
 
         if (timeCounter >= timeBetweenRecognitions)
@@ -175,6 +186,10 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
             System.Math.Abs(pointTrackerRightHand.averageVelocity.y) <= maxMovementVelocity)
         {
             //heal.healing();
+            Vector3 pos =  transform.parent.position;
+            pos.y += 4;
+            transform.parent.position = pos;
+            count++;
             currentState = State.MakingATPose;
             timeCounter = 0;
 

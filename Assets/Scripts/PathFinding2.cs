@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PathFinding : MonoBehaviour {
+public class PathFinding2 : MonoBehaviour {
 
     LineRenderer path;
     public Transform startPos;
@@ -42,24 +42,26 @@ public class PathFinding : MonoBehaviour {
         
    
   
-        if (find)
-        {
+        //if (find)
+        //{
             
             player.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
             target.transform.position = GameObject.FindGameObjectWithTag("Target").transform.position;
 
+        Vector3 startPos = player.transform.position;
+        startPos.y -= .75f;
             path.enabled = true;
-            path.SetPosition(0, startPos.position);
-            path.SetPosition(1, endPos.position);
+            path.SetPosition(0, startPos);
+            path.SetPosition(1, target.transform.position);
            
 
 
 
-        }
-        else
-        {
-            path.enabled = false;
-        }
+        //}
+        //else
+        //{
+        //    path.enabled = false;
+        //}
 
         
         
