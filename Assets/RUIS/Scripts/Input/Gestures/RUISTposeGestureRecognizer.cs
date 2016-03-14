@@ -17,9 +17,9 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
     public int playerId = 0;
     public int bodyTrackingDeviceID = 0;
 
-    public float maxMovementVelocity = 1.0f;
-    public float timeBetweenRecognitions = 1.0f;
-    public float handPositionDifferenceThreshold = 0.1f;
+    public float maxMovementVelocity = 0.3f;
+    public float timeBetweenRecognitions = 0.3f;
+    public float handPositionDifferenceThreshold = 0.2f;
     public float requiredConfidence = 1.0f;
     //public PlayerHealing heal;
 
@@ -61,7 +61,6 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
     }
     public void Start()
     {
-
         bodyTrackingDeviceID = skeletonController.bodyTrackingDeviceID;
     }
     public void Update()
@@ -94,7 +93,7 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
                 DoMakingATPose();
                 break;
             case State.AfterTPose:
-                DoAfterJump();
+                DoAfterTPose();
                 break;
         }
     }
@@ -139,7 +138,7 @@ public class RUISTposeGestureRecognizer : RUISGestureRecognizer
         currentState = State.AfterTPose;
     }
 
-    private void DoAfterJump()
+    private void DoAfterTPose()
     {
         timeCounter += Time.deltaTime;
 

@@ -9,26 +9,24 @@ Licensing  :   RUIS is distributed under the LGPL Version 3 license.
 
 using UnityEngine;
 using System.Collections;
+using CompleteProject;
 
 [RequireComponent(typeof(RUISPointTracker))]
-public class RUISBlastGestureRecognizer : RUISGestureRecognizer
+public class RUISFutureGestureRecognizer : RUISGestureRecognizer
 {
     public int playerId = 0;
 	public int bodyTrackingDeviceID = 0;
 
-    public float maxMovementVelocity = 1.0f;
-    public float timeBetweenRecognitions = 0.75f;
-    public float handPositionMinDistanceInfront = 0.2f;
-    public float handPositionSideToSideThreshold = 0.2f;
-    public float handPositionUpDownThreshold = 0.2f;
+    public float timeBetweenRecognitions = 1.0f;
+    public float handPositionDifferenceThreshold = 0.1f;
     public float requiredConfidence = 1.0f;
-    GameObject triggeredHand;
+    //public CameraSwitch seeing;
 
     public enum State
     {
-        WaitingForBlast,
-        MakingABlast,
-        AfterBlast
+        WaitingForFuture,
+        MakingFuture,
+        AfterFuture
     }
     public State currentState { get; private set; }
 
@@ -41,28 +39,32 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
     public Vector3 rightHandPos { get; private set; }
     public Vector3 leftShoulderPos { get; private set; }
     public Vector3 rightShoulderPos { get; private set; }
-    public Vector3 spinePos { get; private set; }
+    public Vector3 headPos { get; private set; }
     public GameObject leftHandWithPointTracker;
+    public GameObject rightHandWithPointTracker;
+    public GameObject headPointTracker;
 
     private RUISSkeletonManager skeletonManager;
     private RUISPointTracker pointTrackerLeftHand;
     private RUISPointTracker pointTrackerRightHand;
-    private RUISSkeletonController skeletonController;
+    private RUISPointTracker pointTrackerHead;
+    /*private RUISSkeletonController skeletonController;*/
 
     private bool previousIsTracking = false;
     private bool isTrackingBufferTimeFinished = false;
 
     public void Awake()
     {
-		skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;
+		/*skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;*/
         pointTrackerLeftHand = leftHandWithPointTracker.GetComponent<RUISPointTracker>();
+        pointTrackerRightHand = rightHandWithPointTracker.GetComponent<RUISPointTracker>();
+        pointTrackerHead = headPointTracker.GetComponent<RUISPointTracker>();
         skeletonManager = FindObjectOfType(typeof(RUISSkeletonManager)) as RUISSkeletonManager;
-        triggeredHand = leftHandWithPointTracker;
 		ResetProgress();
     }
 	public void Start() {
 		
-		bodyTrackingDeviceID = skeletonController.bodyTrackingDeviceID;
+		/*bodyTrackingDeviceID = skeletonController.bodyTrackingDeviceID;*/
 	}
     public void Update()
     {
@@ -86,26 +88,21 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
 
         switch (currentState)
         {
-            case State.WaitingForBlast:
-                DoWaitingForBlast();
+            case State.WaitingForFuture:
+                DoWaitingForFuture();
                 break;
-            case State.MakingABlast:
-                DoMakingABlast();
+            case State.MakingFuture:
+                DoMakingFuture();
                 break;
-            case State.AfterBlast:
-                DoAfterJump();
+            case State.AfterFuture:
+                DoAfterFuture();
                 break;
         }
     }
 
     public override bool GestureIsTriggered()
     {
-        return gestureEnabled && currentState == State.MakingABlast;
-    }
-
-    public GameObject GetTriggeredHand()
-    {
-        return triggeredHand;
+        return gestureEnabled && currentState == State.MakingFuture;
     }
     
 	public override bool GestureWasTriggered()
@@ -115,15 +112,17 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
 	
     public override float GetGestureProgress()
     {
-        return (gestureEnabled && currentState == State.MakingABlast) ? 1 : 0;
+        return (gestureEnabled && currentState == State.MakingFuture) ? 1 : 0;
     }
 
     public override void ResetProgress()
     {
-        currentState = State.WaitingForBlast;
+        currentState = State.WaitingForFuture;
 
         timeCounter = 0;
     }
+
+
 
     public override void EnableGesture()
     {
@@ -136,12 +135,12 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
         gestureEnabled = false;
     }
 
-    private void DoMakingABlast()
+    private void DoMakingFuture()
     {
-        currentState = State.AfterBlast;
+        currentState = State.AfterFuture;
     }
 
-    private void DoAfterJump()
+    private void DoAfterFuture()
     {
         timeCounter += Time.deltaTime;
 
@@ -152,10 +151,11 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
         }
     }
 
-    private void DoWaitingForBlast()
+    private void DoWaitingForFuture()
     {
 		if (skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.positionConfidence < requiredConfidence ||
-		    skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.positionConfidence < requiredConfidence)
+		    skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.positionConfidence < requiredConfidence ||
+            skeletonManager.skeletons[bodyTrackingDeviceID, playerId].head.positionConfidence < requiredConfidence)
         {
             return;
         }
@@ -164,36 +164,27 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
 		rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
         leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
         rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
-        spinePos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].shoulderSpine.position;
+        headPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].head.position;
 
-        Vector3 leftHandDiffFromSpine = leftShoulderPos - leftHandPos;
-        Vector3 rightHandDiffFromSpine = rightShoulderPos - rightHandPos;
-        bool bastBeingMade = false;
+        //print("LeftHand = " + leftHandPos + "\nRightHand = " + rightHandPos + "\nLeftShoulder = " + leftShoulderPos + "\nRightShoulder = " + rightShoulderPos);
 
-        if (0.0 <= System.Math.Abs(leftHandDiffFromSpine.y) && System.Math.Abs(leftHandDiffFromSpine.y) <= handPositionUpDownThreshold &&
-            0.0 <= System.Math.Abs(leftHandDiffFromSpine.x) && System.Math.Abs(leftHandDiffFromSpine.x) <= handPositionSideToSideThreshold &&
-            System.Math.Abs(leftHandDiffFromSpine.z) >= handPositionMinDistanceInfront)
-        {
-            triggeredHand = leftHandWithPointTracker;
-            bastBeingMade = true;
-        }
-        
-        if (0.0 <= System.Math.Abs(leftHandDiffFromSpine.y) && System.Math.Abs(leftHandDiffFromSpine.y) <= handPositionUpDownThreshold &&
-            0.0 <= System.Math.Abs(leftHandDiffFromSpine.x) && System.Math.Abs(leftHandDiffFromSpine.x) <= handPositionSideToSideThreshold &&
-            System.Math.Abs(leftHandDiffFromSpine.z) >= handPositionMinDistanceInfront)
-        {
-            triggeredHand = leftHandWithPointTracker;
-            bastBeingMade = true;
-        }
+        Vector3 leftHandDiffFromShoulder = leftShoulderPos - leftHandPos;
+        Vector3 rightHandDiffFromShoulder = rightShoulderPos - rightHandPos;
+        Vector3 leftHandDiffFromHead = headPos - leftHandPos;
 
-        if (bastBeingMade && System.Math.Abs(pointTrackerLeftHand.averageVelocity.y) <= maxMovementVelocity)
+
+        if (0.0 <= System.Math.Abs(leftHandDiffFromHead.y) && System.Math.Abs(leftHandDiffFromHead.y) <= handPositionDifferenceThreshold &&
+            0.0 <= System.Math.Abs(leftHandDiffFromHead.z) && System.Math.Abs(leftHandDiffFromHead.z) <= handPositionDifferenceThreshold &&
+            0.0 <= System.Math.Abs(leftHandDiffFromHead.x) && System.Math.Abs(leftHandDiffFromHead.x) <= handPositionDifferenceThreshold
+           )
         {
-            currentState = State.MakingABlast;
+            currentState = State.MakingFuture;
             timeCounter = 0;
 
-            print("Blast Made");
+            print("Future Made");
             return;
         }
+
     }
 
     private IEnumerator StartCountdownTillGestureEnable()

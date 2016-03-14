@@ -11,14 +11,14 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(RUISPointTracker))]
-public class Shockwave : RUISGestureRecognizer
+public class RUISShockwaveGestureRecognizer : RUISGestureRecognizer
 {
     public int playerId = 0;
 	public int bodyTrackingDeviceID = 0;
 
     public float requiredUpwardVelocity = 1.0f;
-    public float timeBetweenJumps = 1.0f;
-    public float feetHeightThreshold = 0.1f;
+    public float timeBetweenJumps = 0.4f;
+    public float feetHeightThreshold = 0.125f;
     public float requiredConfidence = 1.0f;
     //public Detonator other;
 

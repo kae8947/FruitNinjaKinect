@@ -16,7 +16,7 @@
     <jumpGestureEnabled value="true" />
   </KinectSettings>
   <Kinect2Settings>
-    <enabled value="false" />
+    <enabled value="true" />
     <floorDetection value="true" />
   </Kinect2Settings>
   <RazerSettings>

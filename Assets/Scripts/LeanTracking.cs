@@ -85,8 +85,10 @@ public class LeanTracking : MonoBehaviour
 
                 curLeanType = calculateLean(body);
 
-                Debug.Log(curLeanType.ToString());
-
+                if (count % 120 == 0)
+                {
+                    Debug.Log(curLeanType.ToString());
+                }
 
             }
         }
@@ -108,7 +110,7 @@ public class LeanTracking : MonoBehaviour
         float shoulderDiff = System.Math.Abs(shoulderLeft - shoulderRight);
         float forwardDiff = System.Math.Abs(head - spineMid);
 
-        if (count % 10 == 0)
+        if (count % 120 == 0)
         {
             Debug.Log("ShoulderDiff = " + shoulderDiff + "\n" + "ForwardDiff = " + forwardDiff);
         }

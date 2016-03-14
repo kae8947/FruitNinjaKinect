@@ -82,20 +82,20 @@ public class TrackHand : MonoBehaviour
         }
     }
 
-    private void MoveObjectWithJoint(Kinect.Body body, Kinect.JointType hand, Kinect.JointType elbow)
+    private void MoveObjectWithJoint(Kinect.Body body, Kinect.JointType hand, Kinect.JointType shoulder)
     {
         Kinect.Joint? handJoint = null;
-        Kinect.Joint? elbowJoint = null;
+        Kinect.Joint? shoulderJoint = null;
 
         handJoint = body.Joints[hand];
-        elbowJoint = body.Joints[elbow];
+        shoulderJoint = body.Joints[shoulder];
 
-        if (handJoint.HasValue && elbowJoint.HasValue)
+        if (handJoint.HasValue && shoulderJoint.HasValue)
         {
             if (body.HandRightState != Kinect.HandState.Closed)
             {
-                float horizontal = (handJoint.Value.Position.X - elbowJoint.Value.Position.X);
-                float vertical = (handJoint.Value.Position.Y - elbowJoint.Value.Position.Y);
+                float horizontal = (handJoint.Value.Position.X - shoulderJoint.Value.Position.X) * 4;
+                float vertical = (handJoint.Value.Position.Y - shoulderJoint.Value.Position.Y) * 4;
 
                 Vector3 newPos = new Vector3(
                     transform.localPosition.x + horizontal,
@@ -103,9 +103,14 @@ public class TrackHand : MonoBehaviour
                     transform.localPosition.z);
 
                 Vector3 colliderSize = GetComponent<BoxCollider>().size;
+                //Vector3 scale = transform.lossyScale;
+                //scale.x = 1f / scale.x;
+                //scale.y = 1f / scale.y;
+                //scale.z = 1f / scale.z;
+                //colliderSize.Scale(scale);
 
-                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 2.0f), newPos.y + (colliderSize.y / 2.0f), newPos.z);
-                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 2.0f), newPos.y - (colliderSize.y / 2.0f), newPos.z);
+                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 4.0f), newPos.y + (colliderSize.y / 1.0f), newPos.z);
+                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 4.0f), newPos.y - (colliderSize.y / 1.0f), newPos.z);
 
                 Vector3 newTopLeftPosWorldPoint = transform.TransformPoint(newPosTopLeft);
                 Vector3 newBottomRightPosWorldPoint = transform.TransformPoint(newPosBottomRight);
@@ -115,24 +120,24 @@ public class TrackHand : MonoBehaviour
 
                 Vector3 curPostion = transform.localPosition;
 
-                // Check vertical bounds of object
-                //if (newTopLeftPosInScreenPoint.y < Camera.main.pixelHeight && newBottomRightPosInScreenPoint.y > 0)
-                //{
-                //    curPostion.y = newPos.y;
-                //}
-                //else
-                //{
-                //    if (newTopLeftPosInScreenPoint.y > Camera.main.pixelHeight)
-                //    {
-                //        curPostion.y -= 5.0f;
-                //    }
-                //    else
-                //    {
-                //        curPostion.y += 5.0f;
-                //    }
-                //}
+                //Check vertical bounds of object
+                if (newTopLeftPosInScreenPoint.y < Camera.main.pixelHeight && newBottomRightPosInScreenPoint.y > 0)
+                {
+                    curPostion.y = newPos.y;
+                }
+                else
+                {
+                    if (newTopLeftPosInScreenPoint.y > Camera.main.pixelHeight)
+                    {
+                        curPostion.y -= vertical;
+                    }
+                    else
+                    {
+                        curPostion.y += vertical;
+                    }
+                }
 
-                if (newBottomRightPosInScreenPoint.x < Camera.main.pixelWidth && newTopLeftPosInScreenPoint.x > -0.1)
+                if (newBottomRightPosInScreenPoint.x < Camera.main.pixelWidth && newTopLeftPosInScreenPoint.x > 0)
                 {
                     curPostion.x = newPos.x;
                 }
@@ -140,11 +145,11 @@ public class TrackHand : MonoBehaviour
                 {
                     if (newBottomRightPosInScreenPoint.x > Camera.main.pixelWidth)
                     {
-                        curPostion.x -= 1.0f;
+                        curPostion.x -= vertical;
                     }
                     else
                     {
-                        curPostion.x += 1.0f;
+                        curPostion.x += vertical;
                     }
                 }
 
