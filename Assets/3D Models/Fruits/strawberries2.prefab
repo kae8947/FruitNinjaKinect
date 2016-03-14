@@ -201,7 +201,7 @@ GameObject:
   - 114: {fileID: 11488680}
   m_Layer: 10
   m_Name: strawberries2
-  m_TagString: Shootable
+  m_TagString: Shootable2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

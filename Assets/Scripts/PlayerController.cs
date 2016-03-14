@@ -90,6 +90,9 @@ public class PlayerController : MonoBehaviour {
 
 			ScoreManager.score += scoreValue;
 		}
+
+
+
         if (other.gameObject.CompareTag("Shootable") && other.gameObject.layer == LayerMask.NameToLayer("Fruit") && slash.hitting == true)
         {
 
@@ -101,6 +104,21 @@ public class PlayerController : MonoBehaviour {
 
             ScoreManager.score += scoreValue;
         }
+
+
+
+        if (other.gameObject.CompareTag("Shootable2") && other.gameObject.layer == LayerMask.NameToLayer("Fruit") && slash.hitting == true)
+        {
+
+
+
+            
+            Destroy(other.gameObject, 3f);
+            slash.hitting = false;
+
+            ScoreManager.score += scoreValue;
+        }
+
         if (other.gameObject.CompareTag("Shootable") && other.gameObject.layer == LayerMask.NameToLayer("Fruit") && slice.slicing == true)
         {
 
@@ -111,5 +129,17 @@ public class PlayerController : MonoBehaviour {
 
             ScoreManager.score += scoreValue;
         }
+
+        if (other.gameObject.CompareTag("Shootable2") && other.gameObject.layer == LayerMask.NameToLayer("Fruit") && slice.slicing == true)
+        {
+
+
+           
+            Destroy(other.gameObject, 3f);
+            slice.slicing = false;
+
+            ScoreManager.score += scoreValue;
+        }
+
     }
 }

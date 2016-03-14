@@ -20,6 +20,7 @@ TagManager:
   - Target
   - PooP
   - Shootable
+  - Shootable2
   layers:
   - Default
   - TransparentFX

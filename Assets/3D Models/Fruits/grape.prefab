@@ -957,7 +957,7 @@ GameObject:
   - 114: {fileID: 11424828}
   m_Layer: 10
   m_Name: grape
-  m_TagString: Shootable
+  m_TagString: Shootable2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5874,7 +5874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1059efb6e254a47b3bde7bb85c2c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 1
 --- !u!114 &11446956
 MonoBehaviour:
   m_ObjectHideFlags: 1
