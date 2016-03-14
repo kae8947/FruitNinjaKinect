@@ -17,6 +17,7 @@ public class Grappling : MonoBehaviour {
     public GameObjectSelector gameObjectSelector;
     GameObject objectSelect;
     Animator anim;
+    public RUISGestureRecognizer grapple;
 
     void Start () {
 
@@ -30,7 +31,7 @@ public class Grappling : MonoBehaviour {
 
     void Update () {
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) || grapple.GestureIsTriggered())
         {
 
             anim.SetTrigger("Hook");

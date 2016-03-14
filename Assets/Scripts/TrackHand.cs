@@ -92,7 +92,7 @@ public class TrackHand : MonoBehaviour
 
         if (handJoint.HasValue && shoulderJoint.HasValue)
         {
-            if (body.HandRightState != Kinect.HandState.Closed)
+            if (body.HandRightState == Kinect.HandState.Closed)
             {
                 float horizontal = (handJoint.Value.Position.X - shoulderJoint.Value.Position.X) * 4;
                 float vertical = (handJoint.Value.Position.Y - shoulderJoint.Value.Position.Y) * 4;
@@ -109,8 +109,8 @@ public class TrackHand : MonoBehaviour
                 //scale.z = 1f / scale.z;
                 //colliderSize.Scale(scale);
 
-                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 4.0f), newPos.y + (colliderSize.y / 1.0f), newPos.z);
-                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 4.0f), newPos.y - (colliderSize.y / 1.0f), newPos.z);
+                Vector3 newPosTopLeft = new Vector3(newPos.x - (colliderSize.x / 2.0f), newPos.y + (colliderSize.y / 2.0f), newPos.z);
+                Vector3 newPosBottomRight = new Vector3(newPos.x + (colliderSize.x / 2.0f), newPos.y - (colliderSize.y / 2.0f), newPos.z);
 
                 Vector3 newTopLeftPosWorldPoint = transform.TransformPoint(newPosTopLeft);
                 Vector3 newBottomRightPosWorldPoint = transform.TransformPoint(newPosBottomRight);

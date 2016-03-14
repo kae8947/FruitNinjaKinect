@@ -55,7 +55,7 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
     public void Awake()
     {
 		skeletonController = FindObjectOfType(typeof(RUISSkeletonController)) as RUISSkeletonController;
-        //pointTrackerLeftHand = leftHandWithPointTracker.GetComponent<RUISPointTracker>();
+        pointTrackerLeftHand = leftHandWithPointTracker.GetComponent<RUISPointTracker>();
         skeletonManager = FindObjectOfType(typeof(RUISSkeletonManager)) as RUISSkeletonManager;
         triggeredHand = leftHandWithPointTracker;
 		ResetProgress();
