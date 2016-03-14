@@ -23,6 +23,7 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
     public float handPositionUpDownThreshold = 0.2f;
     public float requiredConfidence = 1.0f;
     GameObject triggeredHand;
+    public bool isLeftHand;
 
     public enum State
     {
@@ -160,10 +161,21 @@ public class RUISBlastGestureRecognizer : RUISGestureRecognizer
             return;
         }
 
-		leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
-		rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
-        leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
-        rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        if (isLeftHand)
+        {
+            leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
+            rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
+            leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
+            rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        }
+        else
+        {
+            rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
+            leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
+            rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
+            leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        }
+
         spinePos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].shoulderSpine.position;
 
         Vector3 leftHandDiffFromSpine = leftShoulderPos - leftHandPos;

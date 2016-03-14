@@ -1228,6 +1228,7 @@ MonoBehaviour:
   handPositionSideToSideThreshold: 0.2
   handPositionUpDownThreshold: 0.2
   requiredConfidence: 1
+  isLeftHand: 0
   leftHandWithPointTracker: {fileID: 1264633390}
 --- !u!114 &248031279
 MonoBehaviour:
@@ -1597,6 +1598,7 @@ MonoBehaviour:
   handPositionSideToSideThreshold: 0.2
   handPositionUpDownThreshold: 0.2
   requiredConfidence: 1
+  isLeftHand: 1
   leftHandWithPointTracker: {fileID: 1243496856}
 --- !u!114 &335540781
 MonoBehaviour:
@@ -2139,8 +2141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodySourceManager: {fileID: 86450455}
   sideTollerance: 0.7
-  forwardTollerance: 0.5
-  turnSpeed: 100
+  forwardTollerance: 0.6
+  turnSpeed: 150
   moveSpeed: 10
 --- !u!1001 &488063092
 Prefab:
@@ -2583,7 +2585,7 @@ GameObject:
   - 114: {fileID: 610963851}
   - 114: {fileID: 610963850}
   m_Layer: 0
-  m_Name: FutureRecognizer - Swing
+  m_Name: FutureRecognizer - Swing - Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2620,6 +2622,7 @@ MonoBehaviour:
   leftHandWithPointTracker: {fileID: 1264633390}
   rightHandWithPointTracker: {fileID: 1243496856}
   headPointTracker: {fileID: 1539684660}
+  isLeftHand: 0
 --- !u!114 &610963851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10847,7 +10850,7 @@ GameObject:
   - 114: {fileID: 2110591641}
   - 114: {fileID: 2110591640}
   m_Layer: 0
-  m_Name: FutureRecognizer - Throw Star
+  m_Name: FutureRecognizer - Throw Star - Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10884,6 +10887,7 @@ MonoBehaviour:
   leftHandWithPointTracker: {fileID: 1243496856}
   rightHandWithPointTracker: {fileID: 1264633390}
   headPointTracker: {fileID: 1539684660}
+  isLeftHand: 1
 --- !u!114 &2110591641
 MonoBehaviour:
   m_ObjectHideFlags: 0

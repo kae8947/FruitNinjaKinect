@@ -43,6 +43,7 @@ public class RUISFutureGestureRecognizer : RUISGestureRecognizer
     public GameObject leftHandWithPointTracker;
     public GameObject rightHandWithPointTracker;
     public GameObject headPointTracker;
+    public bool isLeftHand;
 
     private RUISSkeletonManager skeletonManager;
     private RUISPointTracker pointTrackerLeftHand;
@@ -160,10 +161,21 @@ public class RUISFutureGestureRecognizer : RUISGestureRecognizer
             return;
         }
 
-		leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
-		rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
-        leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
-        rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        if (isLeftHand)
+        {
+            leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
+            rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
+            leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
+            rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        }
+        else
+        {
+            rightHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftHand.position;
+            leftHandPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightHand.position;
+            rightShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].leftShoulder.position;
+            leftShoulderPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].rightShoulder.position;
+        }
+		
         headPos = skeletonManager.skeletons[bodyTrackingDeviceID, playerId].head.position;
 
         //print("LeftHand = " + leftHandPos + "\nRightHand = " + rightHandPos + "\nLeftShoulder = " + leftShoulderPos + "\nRightShoulder = " + rightShoulderPos);
