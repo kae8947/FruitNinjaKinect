@@ -5989,6 +5989,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1133863164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133863160}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8771fddbc57b84fa52157571042ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+  Star_forward_Force: 1000
 --- !u!1 &1136870140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6068,7 +6081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
-  currentHealth: 1000
+  currentHealth: 0
   healthSlider: {fileID: 488475466}
   damageImage: {fileID: 207672641}
   flashSpeed: 5
@@ -6273,7 +6286,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139442325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.35071, y: 0.9, z: 50.430176}
+  m_LocalPosition: {x: 65.3, y: 0.9, z: 52}
   m_LocalScale: {x: 0.2927866, y: 0.8222516, z: 0.33222908}
   m_Children:
   - {fileID: 214705572}
@@ -6346,7 +6359,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   Star_forward_Force: 1000
-  distanceToCheck: 100
 --- !u!1 &1148083215
 GameObject:
   m_ObjectHideFlags: 0
@@ -6743,7 +6755,7 @@ GameObject:
   m_Layer: 0
   m_Name: OrangeSpawnPoints
   m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -8702,7 +8714,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1806737208}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 301f37fe01893db45a6f5ea269216fd7, type: 3}
   m_Name: 
