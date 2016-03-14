@@ -8,7 +8,7 @@ public class LeanTracking : MonoBehaviour
     public GameObject bodySourceManager;
     public float sideTollerance;
     public float forwardTollerance;
-    public float turnSpeed = 50f;
+    public float turnSpeed = 100f;
     public float moveSpeed = 10f;
 
     private Dictionary<ulong, ulong> _Bodies = new Dictionary<ulong, ulong>();
@@ -139,13 +139,19 @@ public class LeanTracking : MonoBehaviour
                     // Positive is away from Kinect
                     if (head > spineMid)
                     {
-                        transform.parent.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
+                        CharacterController controller = transform.parent.GetComponent<CharacterController>();
+                        controller.SimpleMove(-Vector3.forward * moveSpeed * Time.deltaTime);
+
+                        //transform.parent.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
                         // Leaning backward
                         return LeanType.Backward;
                     }
                     else
                     {
-                        transform.parent.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+                        CharacterController controller = transform.parent.GetComponent<CharacterController>();
+                        controller.SimpleMove(Vector3.forward * moveSpeed * Time.deltaTime);
+
+                        //transform.parent.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
                         // Leaning forward
                         return LeanType.Forward;
                     }
@@ -156,7 +162,6 @@ public class LeanTracking : MonoBehaviour
                     // No Direction
                     return LeanType.Straight;
                 }
-
             }
         }
         else
