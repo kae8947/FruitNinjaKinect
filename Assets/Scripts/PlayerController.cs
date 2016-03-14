@@ -93,7 +93,8 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Shootable") && other.gameObject.layer == LayerMask.NameToLayer("Fruit") && slash.hitting == true)
         {
 
-           
+            
+            
             other.gameObject.GetComponent<ExplodingFruit>().Explode();
             Destroy(other.gameObject, 3f);
             slash.hitting = false;
