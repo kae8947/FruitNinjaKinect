@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11414110}
   m_Layer: 10
   m_Name: strawberry
-  m_TagString: Shootable
+  m_TagString: Shootable2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -702,6 +702,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 0.5
   attackDamage: 10
+  slash: {fileID: 0}
+  slice: {fileID: 0}
 --- !u!135 &13572762
 SphereCollider:
   m_ObjectHideFlags: 1

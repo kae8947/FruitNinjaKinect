@@ -15,5 +15,14 @@ public class starAttacks : MonoBehaviour {
 
 			ScoreManager.score += scoreValue;
 		}
-	}
+
+        if (other.gameObject.CompareTag("Shootable2"))
+        {
+
+            Destroy(other.gameObject, 1f);
+
+            ScoreManager.score += scoreValue;
+        }
+
+    }
 }
