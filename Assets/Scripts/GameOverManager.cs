@@ -7,7 +7,6 @@ public class GameOverManager : MonoBehaviour
 
     Animator anim;
 
-
     void Awake()
     {
         anim = GetComponent<Animator>();

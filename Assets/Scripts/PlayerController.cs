@@ -30,14 +30,11 @@ public class PlayerController : MonoBehaviour {
         //SetCountText();
         //winText.text = "";
 		GetComponent<ScoreManager>();
-        GameObject g = GameObject.FindGameObjectWithTag("Player").gameObject;
+        //GameObject g = GameObject.FindGameObjectWithTag("Player").gameObject;
         grunt = GetComponentInChildren<Grappling>();
         slash = GetComponentInChildren<SwingSword>();
         slice = GetComponentInChildren<SwingSword2>();
         oopa = GetComponentInChildren<LineRenderer>();
-
-
-
     }
 
 	void Update(){
