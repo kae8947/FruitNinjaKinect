@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Kinect = Windows.Kinect;
@@ -123,6 +123,7 @@ public class BodySourceView : MonoBehaviour
             jointObj.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             jointObj.name = jt.ToString();
             jointObj.transform.parent = body.transform;
+			jointObj.AddComponent<drawDebugLines>();
         }
         
         return body;
@@ -134,7 +135,9 @@ public class BodySourceView : MonoBehaviour
         {
             Kinect.Joint sourceJoint = body.Joints[jt];
             Kinect.Joint? targetJoint = null;
-            
+			Kinect.JointOrientation sourceJointOrientation = body.JointOrientations[jt];
+
+
             if(_BoneMap.ContainsKey(jt))
             {
                 targetJoint = body.Joints[_BoneMap[jt]];
@@ -142,7 +145,8 @@ public class BodySourceView : MonoBehaviour
             
             Transform jointObj = bodyObject.transform.FindChild(jt.ToString());
             jointObj.localPosition = GetVector3FromJoint(sourceJoint);
-            
+			jointObj.rotation = GetQuaternion3FromJoint(sourceJointOrientation);
+
             LineRenderer lr = jointObj.GetComponent<LineRenderer>();
             if(targetJoint.HasValue)
             {
@@ -176,4 +180,9 @@ public class BodySourceView : MonoBehaviour
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
     }
+	private static Quaternion GetQuaternion3FromJoint(Kinect.JointOrientation joint)
+	{
+		return new Quaternion(joint.Orientation.X, joint.Orientation.Y , joint.Orientation.Z , joint.Orientation.W);
+	}
+
 }

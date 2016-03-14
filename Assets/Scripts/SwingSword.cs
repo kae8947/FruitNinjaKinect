@@ -2,26 +2,30 @@
 using System.Collections;
 
 public class SwingSword : MonoBehaviour {
-    Animator anim;
+    public Animator anim;
     public bool hitting = false;
+    private float atSword;
+    private float atSwordTime = 2f;
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.F))
-       {
+        {
 
-
-           hitting = true;
+            anim.SetTrigger("Swing01");
+            hitting = true;
 
         }
 
         if (hitting)
         {
-            anim.SetTrigger("Swing01");
+
             StartCoroutine(Waiting());
 
 
@@ -35,11 +39,21 @@ public class SwingSword : MonoBehaviour {
 
     IEnumerator Waiting()
     {
-        
+
         yield return new WaitForSeconds(0.7f);
         hitting = false;
-        
+
     }
+
+
+
+    
+
+
+
+    
+
+ 
 
 
 }

@@ -16,12 +16,13 @@ public class Grappling : MonoBehaviour {
     public GameObject target;
     public GameObjectSelector gameObjectSelector;
     GameObject objectSelect;
-  
+    Animator anim;
+
     void Start () {
 
         
         grappling = GetComponent<LineRenderer>();
-     
+        anim = GetComponent<Animator>();
         //endPosExtendedPos = endPos.localPosition;
 
     }
@@ -32,6 +33,7 @@ public class Grappling : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Q))
         {
 
+            anim.SetTrigger("Hook");
             objectSelect = gameObjectSelector.getSelectedObject();
             if (objectSelect == null)
             {
