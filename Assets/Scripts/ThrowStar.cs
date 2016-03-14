@@ -8,6 +8,7 @@ public class ThrowStar : MonoBehaviour {
 	public float Star_forward_Force = 1000f;
 	//public float distanceToCheck = 100f;
 	GameObject objectSeleted;
+    public RUISGestureRecognizer throwGesture;
 
 	void Awake()
 	{
@@ -16,9 +17,9 @@ public class ThrowStar : MonoBehaviour {
 
 	void Update () 
 	{
-		objectSeleted = GetComponentInChildren<GameObjectSelector> ().getSelectedObject ();
+		objectSeleted = GetComponentInChildren<GameObjectSelector>().getSelectedObject();
 
-		if(Input.GetButtonDown("Fire1"))
+		if(Input.GetButtonDown("Fire1") || throwGesture.GestureIsTriggered())
 		{
 			if (objectSeleted != null) {
 				Rigidbody starInstance;

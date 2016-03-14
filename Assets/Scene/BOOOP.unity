@@ -1749,7 +1749,7 @@ Transform:
   - {fileID: 1817609732}
   - {fileID: 1321021733}
   m_Father: {fileID: 1139442333}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!120 &364757271
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1852,7 +1852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   hitting: 0
-  gestrureRecognizer: {fileID: 0}
 --- !u!95 &364757276
 Animator:
   serializedVersion: 3
@@ -6334,6 +6333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   Star_forward_Force: 1000
+  throwGesture: {fileID: 0}
 --- !u!1 &1136870140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,8 +6658,8 @@ Transform:
   - {fileID: 441201491}
   - {fileID: 86450457}
   - {fileID: 1126322634}
-  - {fileID: 214705572}
   - {fileID: 364757270}
+  - {fileID: 214705572}
   - {fileID: 157176277}
   - {fileID: 1949728854}
   - {fileID: 2080750374}
@@ -6723,6 +6723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
   Star_forward_Force: 1000
+  throwGesture: {fileID: 2110591640}
 --- !u!114 &1139442338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10696,7 +10697,7 @@ GameObject:
   - 114: {fileID: 2110591641}
   - 114: {fileID: 2110591640}
   m_Layer: 0
-  m_Name: FutureRecognizer
+  m_Name: FutureRecognizer - Throw Star
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
