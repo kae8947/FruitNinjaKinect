@@ -6320,6 +6320,19 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1133863164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133863160}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8771fddbc57b84fa52157571042ce0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starPrefab: {fileID: 5415760, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
+  Star_forward_Force: 1000
 --- !u!1 &1136870140
 GameObject:
   m_ObjectHideFlags: 0
@@ -6401,7 +6414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 1000
-  currentHealth: 1000
+  currentHealth: 0
   healthSlider: {fileID: 488475466}
   damageImage: {fileID: 207672641}
   flashSpeed: 5
@@ -6634,7 +6647,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1139442325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.35071, y: 1.5, z: 50.430176}
+  m_LocalPosition: {x: 74.4, y: 1.5, z: 52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2110591639}
@@ -9196,7 +9209,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1806737208}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 301f37fe01893db45a6f5ea269216fd7, type: 3}
   m_Name: 
@@ -10526,7 +10539,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 11.89
       objectReference: {fileID: 0}
     - target: {fileID: 483194, guid: ee2322e0eef1c134fbacdc875957e924, type: 2}
       propertyPath: m_LocalRotation.x

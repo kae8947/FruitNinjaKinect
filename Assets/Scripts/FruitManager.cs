@@ -15,13 +15,14 @@ public class FruitManager : MonoBehaviour {
 
 	void Start ()
 	{
-		InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+		InvokeRepeating ("Spawn", Random.Range (3.0F, 5.0F), Random.Range (5.0F, 10.0F));
+		//InvokeRepeating ("Spawn", 1F, 5F);
 	}
 
 	void Update(){
 
 		if (playerHealth.currentHealth == playerHealth.startingHealth) {
-			InvokeRepeating ("Spawn", Random.Range (1.0F, 3.0F), Random.Range (1.0F, 3.0F));
+			InvokeRepeating ("Spawn", Random.Range (1.0F, 5.0F), Random.Range (1.0F, 2.0F));
 		}
 
         messageReceived = GetComponent<UDPReceive>().getLatestUDPPacket();
